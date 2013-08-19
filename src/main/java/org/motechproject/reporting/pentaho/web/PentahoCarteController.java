@@ -21,7 +21,7 @@ public class PentahoCarteController {
     @Autowired
     private PentahoReportingService reportingService;
 
-    @RequestMapping(value = "/settings", method = RequestMethod.GET)
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
     @ResponseBody
     public ServerStatus settings() throws StatusParserException {
 
