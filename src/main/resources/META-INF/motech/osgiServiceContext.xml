@@ -12,9 +12,30 @@
     <osgi:reference id="platformSettingsServiceOsgi" cardinality="0..1"
         interface="org.motechproject.server.config.service.PlatformSettingsService" />
 
+    <osgi:reference id="motechSchedulerServiceOsgi" cardinality="0..1"
+        interface="org.motechproject.scheduler.MotechSchedulerService" />
+
     <osgi:reference id="couchDbManager" interface="org.motechproject.commons.couchdb.service.CouchDbManager" />
 
     <bean id="dbConnector" factory-bean="couchDbManager" factory-method="getConnector">
         <constructor-arg value="pentaho" />
+    </bean>
+    
+        <bean id="moduleRegistrationData" class="org.motechproject.osgi.web.ModuleRegistrationData">
+        <constructor-arg name="url" value="../pentaho/resources/index.html"/>
+        <constructor-arg name="moduleName" value="pentaho"/>
+        <constructor-arg name="angularModules">
+            <list>
+                <value>pentaho</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="i18n">
+            <map>
+                <entry key="messages" value="../pentaho/resources/messages/"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="header">
+            <bean class="org.motechproject.osgi.web.Header"/>
+        </constructor-arg>
     </bean>
 </beans>
