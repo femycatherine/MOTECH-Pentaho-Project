@@ -18,7 +18,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 @Controller
 public class SettingsController {
 
-    private static final String CARTE_URL_KEY = "cartUrl";
+    private static final String CARTE_URL_KEY = "carteUrl";
     private static final String CARTE_PORT_KEY = "port";
     private static final String USERNAME_KEY = "username";
     private static final String PASSWORD_KEY = "password";

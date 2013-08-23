@@ -3,8 +3,12 @@
 
     /* Services */
 
-    angular.module('settingsServices', ['ngResource']).factory('Settings', function($resource) {
-        return $resource('../pentaho/settings');
+    angular.module('settingsService', ['ngResource']).factory('Settings', function($resource) {
+        return $resource('../pentaho/api/settings');
+    });
+    
+    angular.module('transformationsService', ['ngResource']).factory('Transformations', function($resource) {
+    	return $resource('../pentaho/api/settings');
     });
 
 }());

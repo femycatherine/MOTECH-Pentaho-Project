@@ -21,5 +21,10 @@
         };
 
     });
+    
+    pentahoModule.controller('TransformationsCtrl', function ($scope, Transformations) {
+    	
+    	
+    });
 
 }());

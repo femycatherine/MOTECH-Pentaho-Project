@@ -101,8 +101,8 @@
                 <configuration>
                     <instructions>
                         <Blueprint-Enabled>true</Blueprint-Enabled>
-                        <Context-Path>pentaho</Context-Path>
-                        <Resource-Path>pentaho/resources</Resource-Path>
+                        <Context-Path>pentaho/api</Context-Path>
+                        <Resource-Path>pentaho</Resource-Path>
                         <Export-Package>
                             org.motechproject.reporting.pentaho;version=${version},
                         </Export-Package>

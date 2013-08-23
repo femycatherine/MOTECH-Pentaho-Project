@@ -22,7 +22,7 @@
     </bean>
     
         <bean id="moduleRegistrationData" class="org.motechproject.osgi.web.ModuleRegistrationData">
-        <constructor-arg name="url" value="../pentaho/resources/index.html"/>
+        <constructor-arg name="url" value="../pentaho/index.html"/>
         <constructor-arg name="moduleName" value="pentaho"/>
         <constructor-arg name="angularModules">
             <list>
@@ -31,7 +31,7 @@
         </constructor-arg>
         <constructor-arg name="i18n">
             <map>
-                <entry key="messages" value="../pentaho/resources/messages/"/>
+                <entry key="messages" value="../pentaho/messages/"/>
             </map>
         </constructor-arg>
         <constructor-arg name="header">

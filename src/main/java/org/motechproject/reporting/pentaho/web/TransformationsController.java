@@ -4,19 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.joda.time.DateTime;
+import org.motechproject.reporting.pentaho.domain.PentahoExecuteTransInstance;
+import org.motechproject.reporting.pentaho.domain.SettingsDto;
 import org.motechproject.reporting.pentaho.exception.StatusParserException;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
 import org.motechproject.reporting.pentaho.request.PentahoStatusRequest;
 import org.motechproject.reporting.pentaho.service.PentahoReportingService;
 import org.motechproject.reporting.pentaho.status.ServerStatus;
+import org.osgi.framework.BundleException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-public class PentahoCarteController {
+public class TransformationsController {
 
     @Autowired
     private PentahoReportingService reportingService;
@@ -46,5 +52,11 @@ public class PentahoCarteController {
         ServerStatus status = reportingService.getServerStatus(statusRequest);
 
         return status;
+    }
+    
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/transformations", method = RequestMethod.POST)
+    public void saveTransformation(@RequestBody PentahoExecuteTransInstance transformations) throws BundleException {
+        
     }
 }

@@ -1,13 +1,10 @@
 package org.motechproject.reporting.pentaho.domain;
 
-import org.codehaus.jackson.annotate.JsonAutoDetect;
-import org.codehaus.jackson.annotate.JsonMethod;
-import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
-@JsonAutoDetect(JsonMethod.NONE)
 public class SettingsDto {
 
-    @JsonProperty
+    @JsonIgnore
     private PentahoServerSettings serverSettings;
 
     public SettingsDto() {
