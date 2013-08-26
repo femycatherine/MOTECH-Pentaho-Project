@@ -1,7 +1,5 @@
 package org.motechproject.reporting.pentaho.domain;
 
-import java.io.Serializable;
-
 /**
  * A class to configure optional parameters.
  *

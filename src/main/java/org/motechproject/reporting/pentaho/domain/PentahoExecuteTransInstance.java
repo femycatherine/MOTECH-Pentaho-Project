@@ -1,7 +1,6 @@
 package org.motechproject.reporting.pentaho.domain;
 
 import java.util.Map;
-
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.ektorp.support.TypeDiscriminator;
 import org.joda.time.DateTime;
@@ -16,7 +15,8 @@ import org.motechproject.commons.couchdb.model.MotechBaseDataObject;
  * on how to configure the optional parameters sent to Pentaho.
  *
  */
-@TypeDiscriminator("doc.type === 'TransformationConfiguration'")
+
+@TypeDiscriminator("doc.type === 'PentahoExecuteTransInstance'")
 public class PentahoExecuteTransInstance extends MotechBaseDataObject {
 
     @JsonProperty

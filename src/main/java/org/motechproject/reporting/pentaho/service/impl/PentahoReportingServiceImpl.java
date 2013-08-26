@@ -1,10 +1,7 @@
 package org.motechproject.reporting.pentaho.service.impl;
 
 import java.util.List;
-
-import org.joda.time.DateTime;
 import org.motechproject.event.MotechEvent;
-import org.motechproject.reporting.pentaho.domain.PentahoExecuteTransInstance;
 import org.motechproject.reporting.pentaho.exception.PentahoJobException;
 import org.motechproject.reporting.pentaho.exception.StatusParserException;
 import org.motechproject.reporting.pentaho.parser.StatusParser;

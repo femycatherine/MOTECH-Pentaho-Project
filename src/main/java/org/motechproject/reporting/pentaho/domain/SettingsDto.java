@@ -50,4 +50,12 @@ public class SettingsDto {
     public void setUsername(final String username) {
         serverSettings.setUsername(username);
     }
+
+    public void setLuceneDates(final String lucene) {
+        serverSettings.setLuceneDates(lucene);
+    }
+
+    public String getLuceneDates() {
+        return serverSettings.getLuceneDates();
+    }
 }

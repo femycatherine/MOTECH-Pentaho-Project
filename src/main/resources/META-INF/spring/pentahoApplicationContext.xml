@@ -30,5 +30,10 @@
         <constructor-arg ref="multiThreadedHttpConnectionManager"/>
     </bean>
 
+    <bean id="pentahoApplicationDatabaseConnector" factory-bean="couchDbManager"
+          factory-method="getConnector">
+        <constructor-arg value="motech-pentaho" />
+    </bean>
+
     <mvc:annotation-driven />
 </beans>

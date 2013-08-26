@@ -3,11 +3,11 @@
 
     /* App Module */
 
-    angular.module('pentaho', ['motech-dashboard', 'ngCookies', 'bootstrap', 'settingsService']).config(['$routeProvider',
+    angular.module('pentaho', ['motech-dashboard', 'ngCookies', 'bootstrap', 'settingsService', 'transformationsService']).config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
                 when('/settings', {templateUrl: '../pentaho/partials/settings.html', controller: 'SettingsCtrl' }).
-                when('/transformations', {templateUrl: '../pentaho/partials/transformations.html', controller: 'SettingsCtrl'}).
+                when('/transformations', {templateUrl: '../pentaho/partials/transformations.html', controller: 'TransformationsCtrl'}).
                 otherwise({redirectTo: '/settings'});
     }]);
 }());

@@ -17,7 +17,8 @@ public class PentahoServerSettings {
     private String carteUrl;
     @JsonProperty
     private String cartePort;
-
+    @JsonProperty
+    private String luceneDates;
 
     public String getUsername() {
         return username != null ? username : StringUtils.EMPTY;
@@ -51,4 +52,11 @@ public class PentahoServerSettings {
         this.cartePort = cartePort;
     }
 
+    public String getLuceneDates() {
+        return luceneDates;
+    }
+
+    public void setLuceneDates(String luceneDates) {
+        this.luceneDates = luceneDates;
+    }
 }

@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.xerces.parsers.DOMParser;
 import org.motechproject.reporting.pentaho.exception.StatusParserException;
 import org.motechproject.reporting.pentaho.status.ServerStatus;
 import org.motechproject.reporting.pentaho.status.TransStatus;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;

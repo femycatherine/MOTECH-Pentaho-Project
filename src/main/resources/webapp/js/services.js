@@ -8,7 +8,7 @@
     });
     
     angular.module('transformationsService', ['ngResource']).factory('Transformations', function($resource) {
-    	return $resource('../pentaho/api/settings');
+    	return $resource('../pentaho/api/transformations');
     });
 
 }());

@@ -22,6 +22,7 @@ public class SettingsController {
     private static final String CARTE_PORT_KEY = "port";
     private static final String USERNAME_KEY = "username";
     private static final String PASSWORD_KEY = "password";
+    private static final String LUCENE_KEY = "lucene";
 
     private SettingsFacade settingsFacade;
 
@@ -38,6 +39,7 @@ public class SettingsController {
         dto.setCartePort(getPropertyValue(CARTE_PORT_KEY));
         dto.setUsername(getPropertyValue(USERNAME_KEY));
         dto.setPassword(getPropertyValue(PASSWORD_KEY));
+        dto.setLuceneDates(getPropertyValue(LUCENE_KEY));
         return dto;
     }
 
@@ -48,6 +50,7 @@ public class SettingsController {
         settingsFacade.setProperty(CARTE_PORT_KEY, settings.getCartePort());
         settingsFacade.setProperty(USERNAME_KEY, settings.getUsername());
         settingsFacade.setProperty(PASSWORD_KEY, settings.getPassword());
+        settingsFacade.setProperty(LUCENE_KEY, settings.getLuceneDates());
     }
 
     private String getPropertyValue(final String propertyKey) {

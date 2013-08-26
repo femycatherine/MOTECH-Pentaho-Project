@@ -50,19 +50,6 @@
 						<input ng-model="param.value" type="text" id="paramValue" />
 					</div>
 
-					<label class="control-label" for="appendValue">{{msg('pentaho.transformations.param.appendValue')}}:</label>
-
-					<div class="controls">
-						<input ng-model="param.appendValue" type="text" id="appendValue" />
-					</div>
-
-
-					<label class="control-label" for="timeOffset">{{msg('pentaho.transformations.param.timeOffset')}}:</label>
-
-					<div class="controls">
-						<input ng-model="param.timeOffset" type="text" id="timeOffset" />
-					</div>
-
 					<div class="control-group">
 						<div class="controls">
 							<label class="" for="appendFieldValue"> <input
@@ -74,18 +61,11 @@
 					</div>
 
 				</div>
-				<div class="control-group">
-					<div class="controls">
-						<input ng-disabled="pentahoTransformationsForm.$invalid"
-							ng-click="submit(transformation)" type="button"
-							value="{{msg('pentaho.transformations.submit')}}"
-							class="btn btn-primary" />
-					</div>
-					<div class="controls">
-						<input ng-click="removeTrans(transformation)" type="button"
-							value="{{msg('pentaho.transformations.delete')}}"
-							class="btn btn-primary" />
-					</div>
+				<div class="controls">
+					<input ng-disabled="pentahoTransformationsForm.$invalid"
+						ng-click="submit()" type="button"
+						value="{{msg('pentaho.transformations.submit')}}"
+						class="btn btn-primary" />
 				</div>
 			</form>
 		</div>

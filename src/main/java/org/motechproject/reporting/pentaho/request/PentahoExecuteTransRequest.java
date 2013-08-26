@@ -19,7 +19,7 @@ public class PentahoExecuteTransRequest extends PentahoRequest {
 
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
-                if (xml != null) {
+                if (this.getXml() != null) {
                     queryParams.add(concat(entry.getKey(), entry.getValue()));
                 }
             }

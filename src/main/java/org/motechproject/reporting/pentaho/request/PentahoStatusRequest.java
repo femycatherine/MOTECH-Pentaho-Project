@@ -11,8 +11,8 @@ public class PentahoStatusRequest extends PentahoRequest {
     public String toQueryString() {
         List<String> queryParams = new ArrayList<>();
 
-        if (xml != null) {
-            queryParams.add(concat("xml", xml));
+        if (this.getXml() != null) {
+            queryParams.add(concat("xml", this.getXml()));
         }
 
         return StringUtils.join(queryParams, "&");

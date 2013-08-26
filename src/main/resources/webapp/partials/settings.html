@@ -46,11 +46,20 @@
 			</div>
 		</div>
 
+		<div class="control-group">
+			<div class="controls">
+				<label class="" for="settingsLuceneDates"> <input
+					ng-model="settings.luceneDates" type="checkbox"
+					id="settingsLuceneDates" ng-true-value="true"
+					ng-false-value="false" /> {{msg('pentaho.settings.luceneDates')}}
+				</label>
+			</div>
+		</div>
+
 		<div class="controls">
 			<input ng-disabled="pentahoSettingsForm.$invalid" ng-click="submit()"
 				type="button" value="{{msg('pentaho.settings.submit')}}"
 				class="btn btn-primary" />
 		</div>
-
 	</form>
 </div>
