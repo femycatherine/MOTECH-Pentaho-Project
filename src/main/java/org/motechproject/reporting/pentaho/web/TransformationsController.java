@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
 import org.motechproject.reporting.pentaho.domain.PentahoExecuteTransInstance;
+import org.motechproject.reporting.pentaho.exception.PentahoJobException;
 import org.motechproject.reporting.pentaho.exception.StatusParserException;
 import org.motechproject.reporting.pentaho.repository.AllPentahoTransformations;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
@@ -66,7 +67,7 @@ public class TransformationsController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/transformations", method = RequestMethod.POST)
     public void saveTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
-        
+
         pentahoTransformations.update(transformation);
         //pentahoTransformations.add(transformation);
     }
@@ -76,10 +77,16 @@ public class TransformationsController {
     public void deleteTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
         pentahoTransformations.remove(transformation);
     }
-    
+
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/startTransformation", method = RequestMethod.POST)
-    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
-        //start here
+    @RequestMapping(value = "/startTransformation", method = RequestMethod.GET)
+    public void startTransformation() throws BundleException, PentahoJobException {
+//        String transId = transformation.getId();
+//        Integer hourOfDay = transformation.getHourOfDay();
+
+        reportingService.scheduleDailyExecTrans("570395ea0356e0e1efb1a3ef0101a739", 5);
+        //        transformation.getDayOfWeek();
+        //        transformation.getDayOfMonth();
+        //make assumptions about type of job
     }
 }

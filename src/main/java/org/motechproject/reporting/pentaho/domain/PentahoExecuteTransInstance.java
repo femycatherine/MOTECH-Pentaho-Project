@@ -22,7 +22,11 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
     @JsonProperty
     private DateTime startDate; //purely for display purposes
     @JsonProperty
-    private String cronExpression; //cron expression for the firing of the job event
+    private Integer hourOfDay;
+    @JsonProperty
+    private Integer dayOfWeek;
+    @JsonProperty
+    private Integer dayOfMonth;
     @JsonProperty
     private Map<String, ParamConfig> params; //parameters and what values they will be passed as
     @JsonProperty
@@ -36,12 +40,28 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
         this.startDate = startDate;
     }
 
-    public String getCronExpression() {
-        return cronExpression;
+    public Integer getHourOfDay() {
+        return hourOfDay;
     }
 
-    public void setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression;
+    public void setHourOfDay(Integer hourOfDay) {
+        this.hourOfDay = hourOfDay;
+    }
+
+    public Integer getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(Integer dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    public Integer getDayOfMonth() {
+        return dayOfMonth;
+    }
+
+    public void setDayOfMonth(Integer dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
     }
 
     public Map<String, ParamConfig> getParams() {

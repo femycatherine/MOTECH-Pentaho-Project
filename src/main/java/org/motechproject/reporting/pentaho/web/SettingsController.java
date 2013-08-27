@@ -18,11 +18,11 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 @Controller
 public class SettingsController {
 
-    private static final String CARTE_URL_KEY = "carteUrl";
-    private static final String CARTE_PORT_KEY = "port";
-    private static final String USERNAME_KEY = "username";
-    private static final String PASSWORD_KEY = "password";
-    private static final String LUCENE_KEY = "lucene";
+    public static final String CARTE_URL_KEY = "carteUrl";
+    public static final String CARTE_PORT_KEY = "port";
+    public static final String USERNAME_KEY = "username";
+    public static final String PASSWORD_KEY = "password";
+    public static final String LUCENE_KEY = "lucene";
 
     private SettingsFacade settingsFacade;
 

@@ -53,11 +53,15 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
     @Override
     public void startTrans(PentahoStartTransRequest request) {
         // TODO Auto-generated method stub
-
     }
 
     public void endReportJob(String executionInstanceId) {
-
+//        String dailyJobId = "";
+//        String weeklyJobId = "";
+//        String monthlyJobId = "";
+        
+        //TODO
+        schedulerService.safeUnscheduleAllJobs(executionInstanceId);
     }
 
     public boolean jobIsRunning(String executionInstanceId, String typeOfJob) {
@@ -75,8 +79,9 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         return true;
     }
 
-    public void scheduleDailyExecTrans(String executionInstanceId, int hour, PentahoExecuteTransRequest request) throws PentahoJobException {
-        String hourString = validateAndParseHour(hour);
+    @Override
+    public void scheduleDailyExecTrans(String executionInstanceId, int hour) throws PentahoJobException {
+        String hourString = validateAndParseValue(hour, 0, 23);
         MotechEvent dailyEvent = new MotechEvent("dailyPentahoReport");
         dailyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
 
@@ -84,13 +89,26 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
 
         schedulerService.safeScheduleJob(job);
     }
+    
+    @Override
+    public void scheduleWeeklyExexTrans(String executionInstanceId, int hour, int day, PentahoExecuteTransRequest request) throws PentahoJobException {
+        String hourString = validateAndParseValue(hour, 0, 23);
+        String dayString = validateAndParseValue(day, 0, 6);
+        
+        MotechEvent weeklyEvent = new MotechEvent("weeklyPentahoReport");
+        weeklyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
+        
+        CronSchedulableJob job = new CronSchedulableJob(weeklyEvent, JobSchedulerUtil.getWeeklyCronExpression(hourString,  dayString));
+        
+        schedulerService.safeScheduleJob(job);
+    }
 
-    private String validateAndParseHour(Integer hour) throws PentahoJobException {
-        if (hour < 0 || hour > 23) {
-            throw new PentahoJobException("Hour must be between 0 and 23");
+    private String validateAndParseValue(Integer value, int lowerBound, int upperBound) throws PentahoJobException {
+        if (value < lowerBound || value > upperBound) {
+            throw new PentahoJobException("Value constraint violated");
         }
 
-        return hour.toString();
+        return value.toString();
     }
 
     @Override
