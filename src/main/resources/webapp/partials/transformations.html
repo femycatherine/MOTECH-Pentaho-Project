@@ -17,13 +17,40 @@
 							msg('pentaho.transformations.transName'))}}</span>
 					</div>
 
-					<label class="control-label" for="cronExpression">{{msg('pentaho.transformations.cron')}}:</label>
+					<label class="control-label" for="minuteOfHour">{{msg('pentaho.transformations.minuteOfHour')}}:</label>
 
 					<div class="controls">
-						<input ng-model="transformation.cronExpression" type="text"
-							id="cronExpression" required /> <span
-							ng-hide="transformation.cronExpression" class="form-hint">{{msg('pentaho.field.required',
-							msg('pentaho.transformations.cronExpression'))}}</span>
+						<input ng-model="transformation.minuteOfHour" type="text"
+							id="minuteOfHour" required /> <span
+							ng-hide="transformation.minuteOfHour" class="form-hint">{{msg('pentaho.field.required',
+							msg('pentaho.transformations.minuteOfHour'))}}</span>
+					</div>
+
+					<label class="control-label" for="hourOfDay">{{msg('pentaho.transformations.hourOfDay')}}:</label>
+
+					<div class="controls">
+						<input ng-model="transformation.hourOfDay" type="text"
+							id="hourOfDay" required /> <span
+							ng-hide="transformation.hourOfDay" class="form-hint">{{msg('pentaho.field.required',
+							msg('pentaho.transformations.hourOfDay'))}}</span>
+					</div>
+
+					<label class="control-label" for="dayOfWeek">{{msg('pentaho.transformations.dayOfWeek')}}:</label>
+
+					<div class="controls">
+						<input ng-model="transformation.dayOfWeek" type="text"
+							id="dayOfWeek" required /> <span
+							ng-hide="transformation.dayOfWeek" class="form-hint">{{msg('pentaho.field.required',
+							msg('pentaho.transformations.dayOfWeek'))}}</span>
+					</div>
+
+					<label class="control-label" for="dayOfMonth">{{msg('pentaho.transformations.dayOfMonth')}}:</label>
+
+					<div class="controls">
+						<input ng-model="transformation.dayOfMonth" type="text"
+							id="dayOfMonth" required /> <span
+							ng-hide="transformation.dayOfMonth" class="form-hint">{{msg('pentaho.field.required',
+							msg('pentaho.transformations.dayOfMonth'))}}</span>
 					</div>
 				</div>
 
@@ -65,14 +92,23 @@
 
 					<div class="control-group">
 						<div class="controls">
-							<label class="" for="appendFieldValue"> <input
+							<label class="" for="paramAppendFieldValue"> <input
 								ng-model="param.appendFieldValue" type="checkbox"
 								id="paramAppendFieldValue" ng-true-value="true"
 								ng-false-value="false" />
 								{{msg('pentaho.transformations.param.appendFieldValue')}} </label>
 						</div>
 					</div>
-
+					
+					<div class="control-group">
+						<div class="controls">
+							<label class="" for="paramAppendDate"> <input
+								ng-model="param.appendDate" type="checkbox"
+								id="paramAppendDate" ng-true-value="true"
+								ng-false-value="false" />
+								{{msg('pentaho.transformations.param.appendDate')}} </label>
+						</div>
+					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">

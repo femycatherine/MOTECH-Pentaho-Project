@@ -1,7 +1,7 @@
 <div class="tab-frame margin-after">
 	<!------------------------  Settings  ------------------------------------->
 	<h4 class="frame-title">{{msg('pentaho.settings.title')}}</h4>
-	<form id="pentahoSettingsForm" name="pentahoSettingsForm"
+	<form ng-model="transformation" id="pentahoSettingsForm" name="pentahoSettingsForm"
 		class="form-horizontal" novalidate>
 
 		<div class="control-group" ng-class="{'error': !settings.carteUrl}">

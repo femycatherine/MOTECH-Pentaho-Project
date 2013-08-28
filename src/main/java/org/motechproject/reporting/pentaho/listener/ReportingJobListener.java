@@ -15,10 +15,10 @@ import org.motechproject.reporting.pentaho.repository.AllPentahoTransformations;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
 import org.motechproject.reporting.pentaho.service.PentahoReportingService;
 import org.motechproject.reporting.pentaho.web.SettingsController;
-import org.motechproject.scheduler.MotechSchedulerService;
 import org.motechproject.server.config.SettingsFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import static org.motechproject.commons.date.util.DateUtil.setTimeZoneUTC;
 
 @Component
 public class ReportingJobListener {
@@ -32,9 +32,9 @@ public class ReportingJobListener {
     @Autowired
     private AllPentahoTransformations allTransformations;
 
-    @MotechListener(subjects = {"dailyReportJob", "weeklyReportJob"})
+    @MotechListener(subjects = {"dailyPentahoReport", "weeklyPentahoReport"})
     public void handleReportJob(MotechEvent event) {
-        String transId = (String) event.getParameters().get(MotechSchedulerService.JOB_ID_KEY);
+        String transId = (String) event.getParameters().get("transId");
         PentahoExecuteTransInstance trans = allTransformations.get(transId);
         PentahoExecuteTransRequest transRequest = new PentahoExecuteTransRequest();
         transRequest.setParams(convertParamMap(trans.getParams(), trans.getHourOfDay(), trans.getDayOfWeek(), trans.getDayOfMonth()));
@@ -63,13 +63,23 @@ public class ReportingJobListener {
             StringBuilder value = new StringBuilder(convertedParams.get(entry.getKey()));
             ParamConfig config = entry.getValue();
             String appendValue = config.getAppendValue();
+
             if (config.isAppendFieldValue()) {
-                value.append(convertedParams.get(appendValue));
+                ParamConfig appendConfig = params.get(config.getAppendValue());
+                if ("DATETIME".equals(appendConfig.getType().toString())) {
+                    DateTime appendTime = DateTime.parse(convertedParams.get(appendValue));
+                    DateTimeFormatter format = DateTimeFormat.forPattern("MM-dd-YYYY");
+                    value.append(format.print(appendTime));
+                } else {
+                    value.append(convertedParams.get(appendValue));
+
+                }
             } else {
                 if (appendValue != null) {
                     value.append(appendValue);
                 }
             }
+
             convertedParams.put(entry.getKey(), value.toString());
         }
     }
@@ -77,7 +87,7 @@ public class ReportingJobListener {
     private String convertParamConfig(ParamConfig paramConfig, Integer hourOfDay, Integer dayOfWeek, Integer dayOfMonth) {
         if ("DATETIME".equals(paramConfig.getType().toString())) {
 
-            DateTime now = DateTime.now();
+            DateTime now = DateTime.now().withSecondOfMinute(0).withMillisOfSecond(0);
 
             if (dayOfMonth != null) {
                 now = now.withDayOfMonth(dayOfMonth);
@@ -88,6 +98,7 @@ public class ReportingJobListener {
             if (hourOfDay != null) {
                 now = now.withHourOfDay(hourOfDay);
             }
+
 
 
             now = offsetTime(now, paramConfig.getTimeOffset());
@@ -101,7 +112,7 @@ public class ReportingJobListener {
                 return formatter.print(now.getMillis());
             }
 
-            return now.toString();
+            return setTimeZoneUTC(now).toString();
         } 
 
         return paramConfig.getValue() == null ? "" : paramConfig.getValue();
@@ -130,13 +141,13 @@ public class ReportingJobListener {
 
         Integer value = Integer.parseInt(split[1]);
 
-        if (timeOffset.toLowerCase().contains("hours")) {
+        if (timeOffset.toLowerCase().contains("hours") || timeOffset.toLowerCase().contains("hour")) {
             return Period.hours(value);
-        } else if (timeOffset.toLowerCase().contains("days")) {
+        } else if (timeOffset.toLowerCase().contains("days") || timeOffset.toLowerCase().contains("day")) {
             return Period.days(value);
-        } else if (timeOffset.toLowerCase().contains("weeks")) {
+        } else if (timeOffset.toLowerCase().contains("weeks") || timeOffset.toLowerCase().contains("week")) {
             return Period.days(value);
-        } else if (timeOffset.toLowerCase().contains("months")) {
+        } else if (timeOffset.toLowerCase().contains("months") || timeOffset.toLowerCase().contains("month")) {
             return Period.days(value);
         }
         return Period.ZERO;

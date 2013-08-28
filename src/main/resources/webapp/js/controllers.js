@@ -8,6 +8,8 @@
 	pentahoModule.controller('SettingsCtrl', function ($scope, Settings) {
 		$scope.settings = Settings.get();
 
+		$scope.transformation = {};
+
 		$scope.submit = function() {
 			$scope.settings.$save(function() {
 				motechAlert('pentaho.settings.success.saved', 'server.saved');
@@ -32,7 +34,7 @@
 		});
 
 		$scope.submit = function(trans) {
-			trans.$save(function() {
+			trans.$updateTrans(function() {
 				motechAlert('pentaho.transformations.success.saved', 'server.saved');
 			}, function() {
 				motechAlert('pentaho.transformations.error.saved', 'server.error');
@@ -40,7 +42,8 @@
 		};
 
 		$scope.removeTrans = function(trans) {
-			trans.$remove(function() {
+
+			trans.$deleteTrans({transId: trans._id}, function() {
 				motechAlert('pentaho.transformations.success.removed', 'server.saved');
 			}, function() {
 				motechAlert('pentaho.transformations.error.removed', 'server.error');

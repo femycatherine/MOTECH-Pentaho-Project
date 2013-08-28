@@ -17,6 +17,7 @@ public class ParamConfig {
     private String value;
 
     private boolean appendFieldValue;
+    private boolean appendDate;
     private String appendValue; //append a value or even name of another param
     private String timeOffset; //date offset, +, -, hours, days, weeks, years, performed before appends
     public String getParamName() {
@@ -54,6 +55,12 @@ public class ParamConfig {
     }
     public void setTimeOffset(String timeOffset) {
         this.timeOffset = timeOffset;
+    }
+    public boolean isAppendDate() {
+        return appendDate;
+    }
+    public void setAppendDate(boolean appendDate) {
+        this.appendDate = appendDate;
     }
 
     

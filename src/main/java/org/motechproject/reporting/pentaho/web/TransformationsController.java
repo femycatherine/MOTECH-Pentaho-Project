@@ -3,6 +3,7 @@ package org.motechproject.reporting.pentaho.web;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.ektorp.UpdateConflictException;
 import org.joda.time.DateTime;
 import org.motechproject.reporting.pentaho.domain.PentahoExecuteTransInstance;
 import org.motechproject.reporting.pentaho.exception.PentahoJobException;
@@ -19,10 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
+@RequestMapping("/transformations")
 public class TransformationsController {
 
     @Autowired
@@ -58,14 +61,38 @@ public class TransformationsController {
         return status;
     }
 
-    @RequestMapping(value = "transformations", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
     public List<PentahoExecuteTransInstance> getTransformations() throws BundleException {
         return pentahoTransformations.getAll();
     }
 
+    @RequestMapping(value = "", method = RequestMethod.PUT)
+    @ResponseBody
+    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException, PentahoJobException {
+
+        try {
+            pentahoTransformations.update(transformation);
+        } catch (UpdateConflictException e) {
+            PentahoExecuteTransInstance oldTrans = pentahoTransformations.get(transformation.getId());
+            transformation.setRevision(oldTrans.getRevision());
+            pentahoTransformations.update(transformation);
+        }
+
+        if (transformation.getDayOfMonth() != null) {
+            //schedule monthly
+            reportingService.scheduleMonthlyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay(), transformation.getDayOfMonth());
+        } else if (transformation.getDayOfWeek() != null) {
+            //schedule weekly
+            reportingService.scheduleWeeklyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay(), transformation.getDayOfWeek());
+        } 
+        //schedule daily
+
+        reportingService.scheduleDailyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay());
+    }
+
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/transformations", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public void saveTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
 
         pentahoTransformations.update(transformation);
@@ -73,20 +100,8 @@ public class TransformationsController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/transformations", method = RequestMethod.DELETE)
-    public void deleteTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
-        pentahoTransformations.remove(transformation);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/startTransformation", method = RequestMethod.GET)
-    public void startTransformation() throws BundleException, PentahoJobException {
-//        String transId = transformation.getId();
-//        Integer hourOfDay = transformation.getHourOfDay();
-
-        reportingService.scheduleDailyExecTrans("570395ea0356e0e1efb1a3ef0101a739", 5);
-        //        transformation.getDayOfWeek();
-        //        transformation.getDayOfMonth();
-        //make assumptions about type of job
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
+    public void deleteTransformation(@RequestParam("transId") String transId) throws BundleException {
+        reportingService.deleteTrans(transId);
     }
 }

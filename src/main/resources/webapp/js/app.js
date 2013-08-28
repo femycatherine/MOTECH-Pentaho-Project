@@ -8,6 +8,7 @@
             $routeProvider.
                 when('/settings', {templateUrl: '../pentaho/partials/settings.html', controller: 'SettingsCtrl' }).
                 when('/transformations', {templateUrl: '../pentaho/partials/transformations.html', controller: 'TransformationsCtrl'}).
+                when('/createTrans', {templateUrl: '../pentaho/partials/createTransformation.html', controller: 'TransformationsCtrl'}).
                 otherwise({redirectTo: '/settings'});
     }]);
 }());

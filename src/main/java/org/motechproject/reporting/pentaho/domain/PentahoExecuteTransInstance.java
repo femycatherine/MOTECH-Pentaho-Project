@@ -22,6 +22,8 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
     @JsonProperty
     private DateTime startDate; //purely for display purposes
     @JsonProperty
+    private Integer minuteOfHour;
+    @JsonProperty
     private Integer hourOfDay;
     @JsonProperty
     private Integer dayOfWeek;
@@ -78,5 +80,13 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
 
     public void setTransName(String transName) {
         this.transName = transName;
+    }
+
+    public Integer getMinuteOfHour() {
+        return minuteOfHour;
+    }
+
+    public void setMinuteOfHour(Integer minuteOfHour) {
+        this.minuteOfHour = minuteOfHour;
     }
 }
