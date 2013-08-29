@@ -1,7 +1,5 @@
 package org.motechproject.reporting.pentaho.service.impl;
 
-import java.util.List;
-
 import org.ektorp.DocumentNotFoundException;
 import org.motechproject.event.MotechEvent;
 import org.motechproject.reporting.pentaho.domain.PentahoExecuteTransInstance;
@@ -18,8 +16,6 @@ import org.motechproject.reporting.pentaho.util.JobSchedulerUtil;
 import org.motechproject.reporting.pentaho.util.PentahoCarteHttpClient;
 import org.motechproject.scheduler.MotechSchedulerService;
 import org.motechproject.scheduler.domain.CronSchedulableJob;
-import org.motechproject.scheduler.domain.JobBasicInfo;
-import org.motechproject.scheduler.domain.JobDetailedInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +57,6 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         StatusParser parser = new StatusParser(responseString);
 
         return parser.parse();
-
     }
 
     @Override
@@ -72,30 +67,6 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
     @Override
     public void startTrans(PentahoStartTransRequest request) {
         // TODO Auto-generated method stub
-    }
-
-    public void endReportJob(String executionInstanceId) {
-        //        String dailyJobId = "";
-        //        String weeklyJobId = "";
-        //        String monthlyJobId = "";
-
-        //TODO
-        schedulerService.safeUnscheduleAllJobs(executionInstanceId);
-    }
-
-    public boolean jobIsRunning(String executionInstanceId, String typeOfJob) {
-        String jobId = typeOfJob + "-" + executionInstanceId;
-
-        JobBasicInfo jobBasicInfo = new JobBasicInfo();
-        jobBasicInfo.setName(jobId);
-
-        JobDetailedInfo info = schedulerService.getScheduledJobDetailedInfo(jobBasicInfo);
-
-        if (info.getEventInfoList().size() == 0) {
-            return false;
-        }
-
-        return true;
     }
 
     @Override
@@ -148,20 +119,4 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
 
         return value.toString();
     }
-
-    @Override
-    public void schedule(String cronExpression, PentahoExecuteTransRequest request) {
-        List<JobBasicInfo> jobList = schedulerService.getScheduledJobsBasicInfo();
-
-        //        "org.motechproject.reporting.pentaho.daily-job.reportName";
-        //        "org.motechproject.reporting.pentaho.weekly-job.reportName";
-        //        
-        for (JobBasicInfo job : jobList) {
-            job.getName();
-            job.getNextFireDate();
-            job.getStartDate();
-            job.getInfo();
-        }
-    }
-
 }

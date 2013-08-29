@@ -17,8 +17,6 @@ public interface PentahoReportingService {
 
     ServerStatus getServerStatus(PentahoStatusRequest request) throws StatusParserException;
 
-    void schedule(String cronExpression, PentahoExecuteTransRequest request);
-
     void scheduleMonthlyExecTrans(String executionInstanceId, int minute, int hour, int dayOfMonth) throws PentahoJobException;
 
     void scheduleWeeklyExecTrans(String executionInstanceId, int minute, int hour, int day)

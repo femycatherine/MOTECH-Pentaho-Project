@@ -2,7 +2,7 @@
 	<!------------------------ Transformations  ------------------------------------->
 	<h4 class="frame-title">{{msg('pentaho.transformations.title')}}</h4>
 
-	<form id="pentahoTransformationsForm" name="pentahotransformationsForm"
+	<form id="pentahoTransformationsForm" name="pentahoTransformationsForm"
 		class="form-horizontal" novalidate>
 		<div class="control-group"
 			ng-class="{'error': !transformation.transName}">
@@ -15,13 +15,36 @@
 					msg('pentaho.transformations.transName'))}}</span>
 			</div>
 
-			<label class="control-label" for="cronExpression">{{msg('pentaho.transformations.cron')}}:</label>
+			<label class="control-label" for="minuteOfHour">{{msg('pentaho.transformations.minuteOfHour')}}:</label>
 
 			<div class="controls">
-				<input ng-model="transformation.cronExpression" type="text"
-					id="cronExpression" required /> <span
-					ng-hide="transformation.cronExpression" class="form-hint">{{msg('pentaho.field.required',
-					msg('pentaho.transformations.cronExpression'))}}</span>
+				<input ng-model="transformation.minuteOfHour" type="text"
+					id="minuteOfHour" required /> <span
+					ng-hide="transformation.minuteOfHour" class="form-hint">{{msg('pentaho.field.required',
+					msg('pentaho.transformations.minuteOfHour'))}}</span>
+			</div>
+
+			<label class="control-label" for="hourOfDay">{{msg('pentaho.transformations.hourOfDay')}}:</label>
+
+			<div class="controls">
+				<input ng-model="transformation.hourOfDay" type="text"
+					id="hourOfDay" required /> <span
+					ng-hide="transformation.hourOfDay" class="form-hint">{{msg('pentaho.field.required',
+					msg('pentaho.transformations.hourOfDay'))}}</span>
+			</div>
+
+			<label class="control-label" for="dayOfWeek">{{msg('pentaho.transformations.dayOfWeek')}}:</label>
+
+			<div class="controls">
+				<input ng-model="transformation.dayOfWeek" type="text"
+					id="dayOfWeek" />
+			</div>
+
+			<label class="control-label" for="dayOfMonth">{{msg('pentaho.transformations.dayOfMonth')}}:</label>
+
+			<div class="controls">
+				<input ng-model="transformation.dayOfMonth" type="text"
+					id="dayOfMonth" />
 			</div>
 		</div>
 
@@ -48,22 +71,59 @@
 				<input ng-model="param.value" type="text" id="paramValue" />
 			</div>
 
+			<label class="control-label" for="appendValue">{{msg('pentaho.transformations.param.appendValue')}}:</label>
+
+			<div class="controls">
+				<input ng-model="param.appendValue" type="text" id="appendValue" />
+			</div>
+
+
+			<label class="control-label" for="timeOffset">{{msg('pentaho.transformations.param.timeOffset')}}:</label>
+
+			<div class="controls">
+				<input ng-model="param.timeOffset" type="text" id="timeOffset" />
+			</div>
+
 			<div class="control-group">
 				<div class="controls">
-					<label class="" for="appendFieldValue"> <input
+					<label class="" for="paramAppendFieldValue"> <input
 						ng-model="param.appendFieldValue" type="checkbox"
-						id="paramAppendFieldValue" ng-true-value="true"
+						ng-true-value="true"
 						ng-false-value="false" />
 						{{msg('pentaho.transformations.param.appendFieldValue')}} </label>
 				</div>
 			</div>
 
+			<div class="control-group">
+				<div class="controls">
+					<label class="" for="paramAppendDate"> <input
+						ng-model="param.appendDate" type="checkbox"
+						ng-true-value="true" ng-false-value="false" />
+						{{msg('pentaho.transformations.param.appendDate')}} </label>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<input ng-click="removeParam($index)" type="button"
+						value="{{msg('pentaho.transformations.removeParam')}}"
+						class="btn btn-primary" />
+				</div>
+			</div>
 		</div>
-		<div class="controls">
-			<input ng-disabled="pentahoTransformationsForm.$invalid"
-				ng-click="submit()" type="button"
-				value="{{msg('pentaho.transformations.submit')}}"
-				class="btn btn-primary" />
+		<div class="control-group">
+			<div class="controls">
+				<input ng-click="addParam()" type="button"
+					value="{{msg('pentaho.transformations.addParam')}}"
+					class="btn btn-primary" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input ng-disabled="pentahoTransformationsForm.$invalid"
+					ng-click="createNewTrans(transformation)" type="button"
+					value="{{msg('pentaho.transformations.create')}}"
+					class="btn btn-primary" />
+			</div>
 		</div>
 	</form>
 </div>

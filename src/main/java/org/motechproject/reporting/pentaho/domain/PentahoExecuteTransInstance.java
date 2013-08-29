@@ -1,6 +1,6 @@
 package org.motechproject.reporting.pentaho.domain;
 
-import java.util.Map;
+import java.util.List;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.ektorp.support.TypeDiscriminator;
 import org.joda.time.DateTime;
@@ -30,7 +30,7 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
     @JsonProperty
     private Integer dayOfMonth;
     @JsonProperty
-    private Map<String, ParamConfig> params; //parameters and what values they will be passed as
+    private List<ParamConfig> params; //parameters and what values they will be passed as
     @JsonProperty
     private String transName;  //name of the transformation
 
@@ -66,11 +66,11 @@ public class PentahoExecuteTransInstance extends MotechBaseDataObject {
         this.dayOfMonth = dayOfMonth;
     }
 
-    public Map<String, ParamConfig> getParams() {
+    public List<ParamConfig> getParams() {
         return params;
     }
 
-    public void setParams(Map<String, ParamConfig> params) {
+    public void setParams(List<ParamConfig> params) {
         this.params = params;
     }
 

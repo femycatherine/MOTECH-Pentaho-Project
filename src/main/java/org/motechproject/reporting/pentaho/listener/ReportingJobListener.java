@@ -1,7 +1,8 @@
 package org.motechproject.reporting.pentaho.listener;
 
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -37,15 +38,23 @@ public class ReportingJobListener {
         String transId = (String) event.getParameters().get("transId");
         PentahoExecuteTransInstance trans = allTransformations.get(transId);
         PentahoExecuteTransRequest transRequest = new PentahoExecuteTransRequest();
-        transRequest.setParams(convertParamMap(trans.getParams(), trans.getHourOfDay(), trans.getDayOfWeek(), trans.getDayOfMonth()));
+        transRequest.setParams(convertParamMap(convertList(trans.getParams()), trans.getHourOfDay(), trans.getDayOfWeek(), trans.getDayOfMonth()));
         transRequest.setTransName(trans.getTransName());
         reportingService.executeTrans(transRequest);
     }
 
-    private Map<String, String> convertParamMap(Map<String, ParamConfig> params, Integer hourOfDay, Integer dayOfWeek, Integer dayOfMonth) {
-        if (params == null || params.size() == 0) {
-            return Collections.emptyMap();
+    private Map<String, ParamConfig> convertList(List<ParamConfig> params) {
+        Map<String, ParamConfig> paramMap = new LinkedHashMap<String, ParamConfig>();
+        if (params != null) {
+            for (ParamConfig param : params) {
+                paramMap.put(param.getParamName(), param);
+            }
         }
+
+        return paramMap;
+    }
+
+    private Map<String, String> convertParamMap(Map<String, ParamConfig> params, Integer hourOfDay, Integer dayOfWeek, Integer dayOfMonth) {
 
         Map<String, String> convertedParams = new HashMap<String, String>();
 

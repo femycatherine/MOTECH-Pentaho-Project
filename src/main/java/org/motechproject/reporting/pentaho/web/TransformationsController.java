@@ -91,12 +91,10 @@ public class TransformationsController {
         reportingService.scheduleDailyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay());
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
     public void saveTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
-
-        pentahoTransformations.update(transformation);
-        //pentahoTransformations.add(transformation);
+        pentahoTransformations.add(transformation);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
