@@ -1,0 +1,12 @@
+{
+   "_id": "_design/calls",
+   "_rev": "4-dd02ed25e8b657b276a4484098a1f1a5",
+   "fulltext": {
+       "by_call": {
+           "defaults": {
+               "store": "yes"
+           },
+           "index": "function(doc){if(doc.type!='FlowSessionRecord'){return null}var ret=new Document();ret.add(new Date(doc.callDetailRecord.startDate),{'type':'date','field':'callStartDate'});ret.add(doc.callDetailRecord.startDate,{'type':'string','field':'callStartDateString'});ret.add(new Date(doc.callDetailRecord.endDate),{'type':'date','field':'callEndDate'});ret.add(doc.callDetailRecord.duration,{'type':'string','field':'callDuration'});ret.add(doc.callDetailRecord.phoneNumber,{'type':'string','field':'phoneNumber'});ret.add(doc.data.motechId,{'type':'string','field':'motechId'});ret.add(doc.data.CallSid,{'type':'string','field':'callSid'});for each(event in doc.callDetailRecord.callEvents){if(event.name==='Pin Failure'){ret.add('AUTHENTICATION_FAILED',{'type':'string','field':'callDisposition'});return ret}}ret.add(doc.callDetailRecord.disposition,{'type':'string','field':'callDisposition'});return ret};"
+       }
+   }
+}
