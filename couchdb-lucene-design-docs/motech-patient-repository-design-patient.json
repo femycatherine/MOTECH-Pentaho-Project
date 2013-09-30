@@ -1,0 +1,12 @@
+{
+   "_id": "_design/patient",
+   "_rev": "1-05acb14ad7660dba0572878389e3b8d9",
+   "fulltext": {
+       "by_patient": {
+           "defaults": {
+               "store": "yes"
+           },
+           "index": "function (doc) {if (doc.type != 'Patient') { return null }; var ret = new Document(); ret.add(doc.facilityId, { 'field': 'facilityId', 'type': 'int' }); ret.add(doc.motechId, { 'field': 'motechId'}); for each(att in doc.person.attributes) { ret.add(att.value, { 'field': att.name });} return ret;}"
+       }
+   }
+}

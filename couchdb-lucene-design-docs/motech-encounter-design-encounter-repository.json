@@ -1,0 +1,12 @@
+{
+   "_id": "_design/encounter",
+   "_rev": "9-d6af16b8476f2e9d159c119052c7bcea",
+   "fulltext": {
+       "by_concept": {
+           "defaults": {
+               "store": "yes"
+           },
+           "index": "function (doc) { if (doc.type != 'Encounter') { return null }; var ret = new Document(); ret.add(doc.observations.length, {'field': 'numAnswers', 'type': 'int'}); ret.add(doc.encounterType, { 'field': 'encounterType' }); ret.add(new Date(doc.encounterDate), { 'type' : 'date', 'field': 'encounterDate'}); ret.add(doc.encounterDate, {'field': 'dateString'}); ret.add(doc.encounterPatientId, { 'field': 'patientId' }); ret.add(doc.encounterId, {'field': 'encounterId' }); for each(obs in doc.observations) {  log.info(obs.value); if (obs.value == 'yes') {  ret.add('yes', {'field': 'answer'}); return ret; }} if (doc.encounterType === 'Stop Request Encounter') {   ret.add(doc.observations[0].value, {'field': 'answer'}); return ret;} ret.add('no', {'field': 'answer'});return ret;}"
+       }
+   }
+}
