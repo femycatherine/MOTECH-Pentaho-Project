@@ -1,6 +1,5 @@
 {
    "_id": "_design/encounter",
-   "_rev": "9-d6af16b8476f2e9d159c119052c7bcea",
    "fulltext": {
        "by_concept": {
            "defaults": {

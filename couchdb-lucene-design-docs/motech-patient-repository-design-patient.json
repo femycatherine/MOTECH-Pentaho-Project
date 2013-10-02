@@ -1,6 +1,5 @@
 {
    "_id": "_design/patient",
-   "_rev": "1-05acb14ad7660dba0572878389e3b8d9",
    "fulltext": {
        "by_patient": {
            "defaults": {

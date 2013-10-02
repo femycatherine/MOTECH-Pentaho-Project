@@ -1,6 +1,5 @@
 {
    "_id": "_design/calls",
-   "_rev": "4-dd02ed25e8b657b276a4484098a1f1a5",
    "fulltext": {
        "by_call": {
            "defaults": {
