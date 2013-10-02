@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+    <osgi:reference cardinality="0..1" id="eventRelayOsgi" interface="org.motechproject.event.listener.EventRelay" />
+
+    <osgi:reference id="eventListenerRegistryServiceOsgi" cardinality="0..1"
+        interface="org.motechproject.event.listener.EventListenerRegistryService" />
+
+    <osgi:reference id="platformSettingsServiceOsgi" cardinality="0..1"
+        interface="org.motechproject.server.config.service.PlatformSettingsService" />
+
+    <osgi:reference id="motechSchedulerServiceOsgi" cardinality="0..1"
+        interface="org.motechproject.scheduler.MotechSchedulerService" />
+
+    <osgi:reference id="couchDbManager" interface="org.motechproject.commons.couchdb.service.CouchDbManager" />
+
+    <bean id="dbConnector" factory-bean="couchDbManager" factory-method="getConnector">
+        <constructor-arg value="pentaho" />
+    </bean>
+    
+        <bean id="moduleRegistrationData" class="org.motechproject.osgi.web.ModuleRegistrationData">
+        <constructor-arg name="url" value="../pentaho/index.html"/>
+        <constructor-arg name="moduleName" value="pentaho"/>
+        <constructor-arg name="angularModules">
+            <list>
+                <value>pentaho</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="i18n">
+            <map>
+                <entry key="messages" value="../pentaho/messages/"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="header">
+            <bean class="org.motechproject.osgi.web.Header"/>
+        </constructor-arg>
+    </bean>
+</beans>

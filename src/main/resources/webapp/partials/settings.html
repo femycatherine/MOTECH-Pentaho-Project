@@ -1,0 +1,65 @@
+<div class="tab-frame margin-after">
+	<!------------------------  Settings  ------------------------------------->
+	<h4 class="frame-title">{{msg('pentaho.settings.title')}}</h4>
+	<form id="pentahoSettingsForm" name="pentahoSettingsForm"
+		class="form-horizontal" novalidate>
+
+		<div class="control-group" ng-class="{'error': !settings.carteUrl}">
+			<label class="control-label" for="settingsHost">{{msg('pentaho.settings.host')}}:</label>
+
+			<div class="controls">
+				<input ng-model="settings.carteUrl" type="text" id="settingsHost"
+					required /> <span ng-hide="settings.carteUrl" class="form-hint">{{msg('pentaho.field.required',
+					msg('pentaho.settings.host'))}}</span>
+			</div>
+		</div>
+
+		<div class="control-group" ng-class="{'error': !settings.cartePort}">
+			<label class="control-label" for="settingsPort">{{msg('pentaho.settings.port')}}:</label>
+
+			<div class="controls">
+				<input ng-model="settings.cartePort" type="text" id="settingsPort"
+					required /> <span ng-hide="settings.cartePort" class="form-hint">{{msg('pentaho.field.required',
+					msg('pentaho.settings.port'))}}</span> <span
+					ng-hide="isNumeric('cartePort')" class="form-hint">{{msg('pentaho.field.numeric',
+					msg('pentaho.settings.port'))}}</span>
+			</div>
+		</div>
+
+		<div class="control-group" ng-class="{'error': !settings.username}">
+			<label class="control-label" for="username">{{msg('pentaho.settings.label.username')}}</label>
+
+			<div class="controls">
+				<input ng-model="settings.username" type="text" id="username"
+					placeholder="{{msg('pentaho.settings.label.username')}}" required />
+				<span ng-hide="settings.username" class="form-hint">{{msg('pentaho.settings.error.username')}}</span>
+			</div>
+		</div>
+
+		<div class="control-group" ng-class="{'error': !settings.password}">
+			<label class="control-label" for="password">{{msg('pentaho.settings.label.password')}}</label>
+
+			<div class="controls">
+				<input ng-model="settings.password" type="password" id="password"
+					placeholder="{{msg('pentaho.settings.label.password')}}" required />
+				<span ng-hide="settings.password" class="form-hint">{{msg('pentaho.settings.error.password')}}</span>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<label class="" for="settingsLuceneDates"> <input
+					ng-model="settings.luceneDates" type="checkbox"
+					id="settingsLuceneDates" ng-true-value="true"
+					ng-false-value="false" /> {{msg('pentaho.settings.luceneDates')}}
+				</label>
+			</div>
+		</div>
+
+		<div class="controls">
+			<input ng-disabled="pentahoSettingsForm.$invalid" ng-click="submit()"
+				type="button" value="{{msg('pentaho.settings.submit')}}"
+				class="btn btn-primary" />
+		</div>
+	</form>
+</div>
