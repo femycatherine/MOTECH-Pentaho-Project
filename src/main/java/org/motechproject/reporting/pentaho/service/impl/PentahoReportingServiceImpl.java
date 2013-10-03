@@ -90,6 +90,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
 
         MotechEvent weeklyEvent = new MotechEvent("weeklyPentahoReport");
         weeklyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
+        weeklyEvent.getParameters().put("transId", executionInstanceId);
 
         CronSchedulableJob job = new CronSchedulableJob(weeklyEvent, JobSchedulerUtil.getWeeklyCronExpression(minuteString, hourString,  dayString));
 
@@ -106,6 +107,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
 
         MotechEvent monthlyEvent = new MotechEvent("monthlyPentahoReport");
         monthlyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
+        monthlyEvent.getParameters().put("transId", executionInstanceId);
 
         CronSchedulableJob job = new CronSchedulableJob(monthlyEvent, JobSchedulerUtil.getMonthlyCronExpression(minuteString, hourString,  dayString));
 
