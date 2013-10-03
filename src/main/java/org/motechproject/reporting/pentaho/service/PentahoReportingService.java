@@ -22,5 +22,5 @@ public interface PentahoReportingService {
     void scheduleWeeklyExecTrans(String executionInstanceId, int minute, int hour, int day)
             throws PentahoJobException;
 
-    void scheduleDailyExecTrans(String executionInstanceId, int hour, int minute) throws PentahoJobException;
+    void scheduleDailyExecTrans(String executionInstanceId, int minute, int hour) throws PentahoJobException;
 }
