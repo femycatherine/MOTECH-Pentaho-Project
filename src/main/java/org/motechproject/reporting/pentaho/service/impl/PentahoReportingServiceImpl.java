@@ -70,7 +70,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
     }
 
     @Override
-    public void scheduleDailyExecTrans(String executionInstanceId, int hour, int minute) throws PentahoJobException {
+    public void scheduleDailyExecTrans(String executionInstanceId, int minute, int hour) throws PentahoJobException {
         String hourString = validateAndParseValue(hour, 0, 23);
         String minuteString = validateAndParseValue(minute, 0, 59);
         MotechEvent dailyEvent = new MotechEvent("dailyPentahoReport");
