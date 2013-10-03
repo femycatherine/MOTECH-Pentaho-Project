@@ -77,7 +77,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         dailyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
         dailyEvent.getParameters().put("transId", executionInstanceId);
 
-        CronSchedulableJob job = new CronSchedulableJob(dailyEvent, JobSchedulerUtil.getDailyCronExpression(hourString, minuteString));
+        CronSchedulableJob job = new CronSchedulableJob(dailyEvent, JobSchedulerUtil.getDailyCronExpression(minuteString, hourString));
 
         schedulerService.safeScheduleJob(job);
     }
