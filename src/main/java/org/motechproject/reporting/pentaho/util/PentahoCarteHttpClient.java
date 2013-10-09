@@ -39,6 +39,8 @@ public class PentahoCarteHttpClient {
 
     private String getRequest(String requestUrl, PentahoRequest pentahoRequest) {
 
+        logger.info("Sending request to Pentaho: " + requestUrl);
+        
         HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest );
 
         try {
@@ -46,9 +48,9 @@ public class PentahoCarteHttpClient {
             InputStream responseBodyAsStream = getMethod.getResponseBodyAsStream();
             return IOUtils.toString(responseBodyAsStream);
         } catch (HttpException e) {
-            logger.warn("HttpException while sending request to CommCare: " + e.getMessage());
+            logger.warn("HttpException while sending request to Pentaho: " + e.getMessage());
         } catch (IOException e) {
-            logger.warn("IOException while sending request to CommCare: " + e.getMessage());
+            logger.warn("IOException while sending request to Pentaho: " + e.getMessage());
         } finally {
             getMethod.releaseConnection();
         }
