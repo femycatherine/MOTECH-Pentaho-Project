@@ -16,7 +16,7 @@
         </parameter>
         <parameter>
             <name>fileName</name>
-            <default_value>dailyReport</default_value>
+            <default_value>testDailyReport-</default_value>
             <description/>
         </parameter>
         <parameter>
