@@ -38,8 +38,6 @@ public class PentahoCarteHttpClient {
     }
 
     private String getRequest(String requestUrl, PentahoRequest pentahoRequest) {
-
-        logger.info("Sending request to Pentaho: " + requestUrl);
         
         HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest );
 
@@ -111,8 +109,11 @@ public class PentahoCarteHttpClient {
         }
 
         public void run() {
-            getRequest(getExecuteTransUrl(), request);
+            String requestUrl = getExecuteTransUrl();
+            logger.info("Sending execute request to Pentaho: " + requestUrl);
+            
+            String requestResult = getRequest(requestUrl, request);
+            logger.debug("Execute result: " + requestResult);
         }
     }
-
 }
