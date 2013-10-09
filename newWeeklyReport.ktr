@@ -1442,7 +1442,7 @@
            <schema_name/>
            </partitioning>
        <formula><field_name>fullUrl</field_name>
-<formula_string>url+database+part2+&quot;?q=callDisposition:ANSWERED%2FBUSY%2FFAILED%2FNO_ANSWER%2FUNKNOWN%2F%2FAUTHENTICATION_FAILED&amp;limit=1000000&quot;</formula_string>
+<formula_string>url+database+part2+&quot;?q=callStartDate%3Cdate%3E:%5B&quot; + startDate + &quot;%20TO%20&quot; + endDate + &quot;%5D&amp;limit=1000000&quot;</formula_string>
 <value_type>String</value_type>
 <value_length>-1</value_length>
 <value_precision>-1</value_precision>
