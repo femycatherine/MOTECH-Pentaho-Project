@@ -27,9 +27,9 @@ import static org.motechproject.commons.date.util.DateUtil.setTimeZoneUTC;
 
 @Component
 public class ReportingJobListener {
-    
+
     private static final String UTF_8_ENCODING = "UTF-8";
-    
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -41,12 +41,13 @@ public class ReportingJobListener {
     @Autowired
     private AllPentahoTransformations allTransformations;
 
-    @MotechListener(subjects = {"dailyPentahoReport", "weeklyPentahoReport"})
+    @MotechListener(subjects = { "dailyPentahoReport", "weeklyPentahoReport" })
     public void handleReportJob(MotechEvent event) {
         String transId = (String) event.getParameters().get("transId");
         PentahoExecuteTransInstance trans = allTransformations.get(transId);
         PentahoExecuteTransRequest transRequest = new PentahoExecuteTransRequest();
-        transRequest.setParams(convertParamMap(convertList(trans.getParams()), trans.getHourOfDay(), trans.getDayOfWeek(), trans.getDayOfMonth()));
+        transRequest.setParams(convertParamMap(convertList(trans.getParams()), trans.getHourOfDay(),
+                trans.getDayOfWeek(), trans.getDayOfMonth()));
         transRequest.setTransName(trans.getTransName());
         reportingService.executeTrans(transRequest);
     }
@@ -62,7 +63,8 @@ public class ReportingJobListener {
         return paramMap;
     }
 
-    private Map<String, String> convertParamMap(Map<String, ParamConfig> params, Integer hourOfDay, Integer dayOfWeek, Integer dayOfMonth) {
+    private Map<String, String> convertParamMap(Map<String, ParamConfig> params, Integer hourOfDay, Integer dayOfWeek,
+            Integer dayOfMonth) {
 
         Map<String, String> convertedParams = new HashMap<String, String>();
 
@@ -72,7 +74,25 @@ public class ReportingJobListener {
 
         appendParams(convertedParams, params);
 
+        encodeDates(convertedParams, params);
+
         return convertedParams;
+    }
+
+    private void encodeDates(Map<String, String> convertedParams, Map<String, ParamConfig> params) {
+        for (Map.Entry<String, ParamConfig> entry : params.entrySet()) {
+
+            ParamConfig config = entry.getValue();
+            if ("DATETIME".equals(config.getType().toString())) {
+                String dateString = convertedParams.get(entry.getKey());
+                try {
+                    dateString = URLEncoder.encode(dateString, UTF_8_ENCODING);
+                    convertedParams.put(entry.getKey(), dateString);
+                } catch (UnsupportedEncodingException e) {
+                    logger.warn("UnsupportedEncodingException encoding date [" + dateString + "]: " + e);
+                }
+            }
+        }
     }
 
     private void appendParams(Map<String, String> convertedParams, Map<String, ParamConfig> params) {
@@ -116,28 +136,17 @@ public class ReportingJobListener {
                 now = now.withHourOfDay(hourOfDay);
             }
 
-
-
             now = offsetTime(now, paramConfig.getTimeOffset());
 
             boolean luceneDateFormat = Boolean.parseBoolean(settings.getProperty(SettingsController.LUCENE_KEY));
 
-
             if (luceneDateFormat) {
                 DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-                String dateString = formatter.print(now.getMillis());
-                
-                try {
-                    dateString = URLEncoder.encode(dateString, UTF_8_ENCODING);
-                } catch (UnsupportedEncodingException e) {
-                    logger.warn("UnsupportedEncodingException when encoding Lucene date: " + e);
-                }
-                
-                return dateString;
+                return formatter.print(now.getMillis());
             }
 
             return setTimeZoneUTC(now).toString();
-        } 
+        }
 
         return paramConfig.getValue() == null ? "" : paramConfig.getValue();
     }
