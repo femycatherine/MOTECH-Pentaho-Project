@@ -8,6 +8,7 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.URI;
 import org.apache.commons.io.IOUtils;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
 import org.motechproject.reporting.pentaho.request.PentahoRequest;
@@ -41,6 +42,14 @@ public class PentahoCarteHttpClient {
         
         HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest );
         logger.info("Sending request to Pentaho at [" + requestUrl + "] with query [" + getMethod.getQueryString() + "]");
+        
+        try {
+            URI uri = getMethod.getURI();
+            String uriString = uri.toString();
+            uriString.charAt(0);
+        } catch (Exception e) {
+            logger.debug("URI exception: " + e);
+        }
         
         try {
             commonsHttpClient.executeMethod(getMethod);
