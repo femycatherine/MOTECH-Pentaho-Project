@@ -10,6 +10,7 @@ import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.URIException;
+import java.net.URLEncoder;
 import org.apache.commons.io.IOUtils;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
 import org.motechproject.reporting.pentaho.request.PentahoRequest;
@@ -28,9 +29,11 @@ public class PentahoCarteHttpClient {
     private HttpClient commonsHttpClient;
     private SettingsFacade settingsFacade;
     private static final String KETTLE_PATH = "kettle";
+    private static final String UTF_8_ENCODING = "UTF-8";
 
     @Autowired
-    public PentahoCarteHttpClient(final HttpClient commonsHttpClient, @Qualifier("pentahoReportingSettings") final SettingsFacade settingsFacade) {
+    public PentahoCarteHttpClient(final HttpClient commonsHttpClient,
+            @Qualifier("pentahoReportingSettings") final SettingsFacade settingsFacade) {
         this.commonsHttpClient = commonsHttpClient;
         this.settingsFacade = settingsFacade;
     }
@@ -40,20 +43,26 @@ public class PentahoCarteHttpClient {
     }
 
     private String getRequest(String requestUrl, PentahoRequest pentahoRequest) {
-        
-        HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest );
+
+        HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest);
 
         try {
             URI uri = getMethod.getURI();
             logger.info("Sending request to Pentaho: " + uri);
-                    
+
+            String encodedUriString = URLEncoder.encode(uri.toString(), UTF_8_ENCODING);
+            getMethod.setURI(new URI(encodedUriString, true));
+            
+            uri = getMethod.getURI();
+            logger.info("AKA, encoded: " + uri);
+
             commonsHttpClient.executeMethod(getMethod);
             InputStream responseBodyAsStream = getMethod.getResponseBodyAsStream();
-            
+
             String getResponse = IOUtils.toString(responseBodyAsStream);
             logger.debug("Response from Pentaho: " + getResponse);
             return getResponse;
-            
+
         } catch (URIException e) {
             logger.warn("URIException building request for Pentaho: " + e.getMessage());
         } catch (HttpException e) {
@@ -82,8 +91,7 @@ public class PentahoCarteHttpClient {
     private void authenticate() {
         commonsHttpClient.getParams().setAuthenticationPreemptive(true);
 
-        commonsHttpClient.getState().setCredentials(
-                new AuthScope(null, -1, null, null),
+        commonsHttpClient.getState().setCredentials(new AuthScope(null, -1, null, null),
                 new UsernamePasswordCredentials(getUsername(), getPassword()));
     }
 
