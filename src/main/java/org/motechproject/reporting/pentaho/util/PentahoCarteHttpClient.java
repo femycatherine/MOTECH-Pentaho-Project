@@ -10,6 +10,7 @@ import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.URIException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import org.apache.commons.io.IOUtils;
 import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
@@ -49,12 +50,6 @@ public class PentahoCarteHttpClient {
         try {
             URI uri = getMethod.getURI();
             logger.info("Sending request to Pentaho: " + uri);
-
-            String encodedUriString = URLEncoder.encode(uri.toString(), UTF_8_ENCODING);
-            logger.info("AKA, encoded: " + encodedUriString);
-            
-            getMethod.setURI(new URI(encodedUriString, true));
-            
             commonsHttpClient.executeMethod(getMethod);
             InputStream responseBodyAsStream = getMethod.getResponseBodyAsStream();
 
@@ -81,7 +76,12 @@ public class PentahoCarteHttpClient {
         authenticate();
 
         if (pentahoRequest != null) {
-            requestMethod.setQueryString(pentahoRequest.toQueryString());
+            try {
+                String queryString = URLEncoder.encode(pentahoRequest.toQueryString(), UTF_8_ENCODING);
+                requestMethod.setQueryString(queryString);
+            } catch (UnsupportedEncodingException e) {
+                logger.warn("Error encoding request query string: " + e);
+            }
         }
 
         return requestMethod;
