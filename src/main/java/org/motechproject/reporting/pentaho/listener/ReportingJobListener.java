@@ -141,8 +141,9 @@ public class ReportingJobListener {
             boolean luceneDateFormat = Boolean.parseBoolean(settings.getProperty(SettingsController.LUCENE_KEY));
 
             if (luceneDateFormat) {
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-                return formatter.print(now.getMillis());
+                //DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                //return formatter.print(now.getMillis());
+                return new Long(now.getMillis()).toString();
             }
 
             return setTimeZoneUTC(now).toString();
