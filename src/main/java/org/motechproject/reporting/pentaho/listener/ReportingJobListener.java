@@ -81,12 +81,12 @@ public class ReportingJobListener {
 
     private void encodeDates(Map<String, String> convertedParams, Map<String, ParamConfig> params) {
         for (Map.Entry<String, ParamConfig> entry : params.entrySet()) {
-
             ParamConfig config = entry.getValue();
             if ("DATETIME".equals(config.getType().toString())) {
                 String dateString = convertedParams.get(entry.getKey());
                 try {
-                    dateString = URLEncoder.encode(dateString, UTF_8_ENCODING);
+                    DateTime date = DateTime.parse(dateString);
+                    dateString = URLEncoder.encode(new Long(date.getMillis()).toString(), UTF_8_ENCODING);
                     convertedParams.put(entry.getKey(), dateString);
                 } catch (UnsupportedEncodingException e) {
                     logger.warn("UnsupportedEncodingException encoding date [" + dateString + "]: " + e);
@@ -141,9 +141,8 @@ public class ReportingJobListener {
             boolean luceneDateFormat = Boolean.parseBoolean(settings.getProperty(SettingsController.LUCENE_KEY));
 
             if (luceneDateFormat) {
-                //DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-                //return formatter.print(now.getMillis());
-                return new Long(now.getMillis()).toString();
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                return formatter.print(now.getMillis());
             }
 
             return setTimeZoneUTC(now).toString();
