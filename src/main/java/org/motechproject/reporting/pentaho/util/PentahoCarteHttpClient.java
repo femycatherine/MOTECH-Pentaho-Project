@@ -51,11 +51,10 @@ public class PentahoCarteHttpClient {
             logger.info("Sending request to Pentaho: " + uri);
 
             String encodedUriString = URLEncoder.encode(uri.toString(), UTF_8_ENCODING);
+            logger.info("AKA, encoded: " + encodedUriString);
+            
             getMethod.setURI(new URI(encodedUriString, true));
             
-            uri = getMethod.getURI();
-            logger.info("AKA, encoded: " + uri);
-
             commonsHttpClient.executeMethod(getMethod);
             InputStream responseBodyAsStream = getMethod.getResponseBodyAsStream();
 
