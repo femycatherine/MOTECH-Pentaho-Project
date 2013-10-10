@@ -40,11 +40,14 @@ public class PentahoCarteHttpClient {
     private String getRequest(String requestUrl, PentahoRequest pentahoRequest) {
         
         HttpMethod getMethod = buildRequest(requestUrl, pentahoRequest );
-
+        logger.info("Sending request to Pentaho at [" + requestUrl + "] with query [" + getMethod.getQueryString() + "]");
+        
         try {
             commonsHttpClient.executeMethod(getMethod);
             InputStream responseBodyAsStream = getMethod.getResponseBodyAsStream();
-            return IOUtils.toString(responseBodyAsStream);
+            String getResponse = IOUtils.toString(responseBodyAsStream);
+            logger.debug("Response from Pentaho: " + getResponse);
+            return getResponse;
         } catch (HttpException e) {
             logger.warn("HttpException while sending request to Pentaho: " + e.getMessage());
         } catch (IOException e) {
@@ -109,11 +112,7 @@ public class PentahoCarteHttpClient {
         }
 
         public void run() {
-            String requestUrl = getExecuteTransUrl();
-            logger.info("Sending execute request to Pentaho: " + requestUrl);
-            
-            String requestResult = getRequest(requestUrl, request);
-            logger.debug("Execute result: " + requestResult);
+            getRequest(getExecuteTransUrl(), request);
         }
     }
 }
