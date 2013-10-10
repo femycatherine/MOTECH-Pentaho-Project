@@ -8,6 +8,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import org.motechproject.event.MotechEvent;
 import org.motechproject.event.listener.annotations.MotechListener;
 import org.motechproject.reporting.pentaho.domain.ParamConfig;
@@ -17,12 +19,18 @@ import org.motechproject.reporting.pentaho.request.PentahoExecuteTransRequest;
 import org.motechproject.reporting.pentaho.service.PentahoReportingService;
 import org.motechproject.reporting.pentaho.web.SettingsController;
 import org.motechproject.server.config.SettingsFacade;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import static org.motechproject.commons.date.util.DateUtil.setTimeZoneUTC;
 
 @Component
 public class ReportingJobListener {
+    
+    private static final String UTF_8_ENCODING = "UTF-8";
+    
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private SettingsFacade settings;
@@ -117,8 +125,15 @@ public class ReportingJobListener {
 
             if (luceneDateFormat) {
                 DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-
-                return formatter.print(now.getMillis());
+                String dateString = formatter.print(now.getMillis());
+                
+                try {
+                    dateString = URLEncoder.encode(dateString, UTF_8_ENCODING);
+                } catch (UnsupportedEncodingException e) {
+                    logger.warn("UnsupportedEncodingException when encoding Lucene date: " + e);
+                }
+                
+                return dateString;
             }
 
             return setTimeZoneUTC(now).toString();
