@@ -10,7 +10,7 @@
     <directory>&#47;</directory>
     <parameters>
         <parameter>
-            <name>callStartDate</name>
+            <name>callQueryStartDate</name>
             <default_value>2013-07-01T00:00:00.000</default_value>
             <description/>
         </parameter>
@@ -512,8 +512,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>callStartDate</name>
-        <variable>${callStartDate}</variable>
+        <name>callQueryStartDate</name>
+        <variable>${callQueryStartDate}</variable>
         <type>String</type>
         <format/>
         <currency/>
@@ -1464,7 +1464,7 @@
            <schema_name/>
            </partitioning>
        <formula><field_name>fullUrl</field_name>
-<formula_string>url+database+part2+&quot;?q=callStartDate%3Cdate%3E:%5B&quot; + callStartDate + &quot;%20TO%20&quot; + endDate + &quot;%5D&amp;limit=1000000&quot;</formula_string>
+<formula_string>url+database+part2+&quot;?q=callStartDate%3Cdate%3E:%5B&quot; + callQueryStartDate + &quot;%20TO%20&quot; + endDate + &quot;%5D&amp;limit=1000000&quot;</formula_string>
 <value_type>String</value_type>
 <value_length>-1</value_length>
 <value_precision>-1</value_precision>
