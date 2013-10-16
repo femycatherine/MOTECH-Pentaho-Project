@@ -80,15 +80,18 @@ public class TransformationsController {
         }
 
         if (transformation.getDayOfMonth() != null) {
-            //schedule monthly
-            reportingService.scheduleMonthlyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay(), transformation.getDayOfMonth());
+            // schedule monthly
+            reportingService.scheduleMonthlyExecTrans(transformation.getId(), transformation.getMinuteOfHour(),
+                    transformation.getHourOfDay(), transformation.getDayOfMonth());
         } else if (transformation.getDayOfWeek() != null) {
-            //schedule weekly
-            reportingService.scheduleWeeklyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay(), transformation.getDayOfWeek());
-        } 
-        //schedule daily
-
-        reportingService.scheduleDailyExecTrans(transformation.getId(), transformation.getMinuteOfHour(), transformation.getHourOfDay());
+            // schedule weekly
+            reportingService.scheduleWeeklyExecTrans(transformation.getId(), transformation.getMinuteOfHour(),
+                    transformation.getHourOfDay(), transformation.getDayOfWeek());
+        } else {
+            // schedule daily
+            reportingService.scheduleDailyExecTrans(transformation.getId(), transformation.getMinuteOfHour(),
+                    transformation.getHourOfDay());
+        }
     }
 
     @ResponseStatus(HttpStatus.CREATED)
