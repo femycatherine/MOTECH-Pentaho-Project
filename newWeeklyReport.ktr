@@ -26,7 +26,7 @@
         </parameter>
         <parameter>
             <name>filePath</name>
-            <default_value>C:\Users\Administrator\Desktop\</default_value>
+            <default_value>Y:\WeeklyReports</default_value>
             <description/>
         </parameter>
         <parameter>
