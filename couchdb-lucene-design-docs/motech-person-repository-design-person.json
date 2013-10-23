@@ -1,0 +1,11 @@
+{
+   "_id": "_design/person",
+   "fulltext": {
+       "by_person": {
+           "defaults": {
+               "store": "yes"
+           },
+           "index": "function (doc){if(doc.type!='Person'){return null;}var personId='missing';var iptInitDate='missing';var phoneNumber='missing';var language='missing';var pin='missing';var mrn='missing';var demoPerson='false';personId=doc._id;for(index in doc.attributes){var attribute=doc.attributes[index];if(attribute.name==='ipt_initiation_date'){iptInitDate=attribute.value;}else{if(attribute.name==='Phone Number'){phoneNumber=attribute.value;}else{if(attribute.name==='Language'){language=attribute.value;}else{if(attribute.name==='Pin'){pin=attribute.value;}else{if(attribute.name==='mrn'){mrn=attribute.value;}else{if(attribute.name==='DemoPerson'){demoPerson=attribute.value;}}}}}}}if('true'===demoPerson){return null;}var ret=new Document();ret.add(personId,{type:'string',field:'personId'});ret.add(iptInitDate,{type:'string',field:'iptInitDate'});ret.add(phoneNumber,{type:'string',field:'phoneNumber'});ret.add(language,{type:'string',field:'language'});ret.add(pin,{type:'string',field:'pin'});ret.add(mrn,{type:'string',field:'mrn'});return ret;}"
+       }
+   }
+}

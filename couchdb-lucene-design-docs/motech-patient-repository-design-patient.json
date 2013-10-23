@@ -5,7 +5,7 @@
            "defaults": {
                "store": "yes"
            },
-           "index": "function (doc) {if (doc.type != 'Patient') { return null }; var ret = new Document(); ret.add(doc.facilityId, { 'field': 'facilityId', 'type': 'int' }); ret.add(doc.motechId, { 'field': 'motechId'}); for each(att in doc.person.attributes) { ret.add(att.value, { 'field': att.name });} return ret;}"
+           "index": "function (doc){if(doc.type!='Patient'){return null;}var facilityId='missing';var personId='missing';var motechId='missing';if('facilityId' in doc&&doc.facilityId){facilityId=doc.facilityId;}if('personId' in doc&&doc.personId){personId=doc.personId;}if('motechId' in doc&&doc.motechId){motechId=doc.motechId;}var ret=new Document();ret.add(facilityId,{type:'string',field:'facilityId'});ret.add(personId,{type:'string',field:'personId'});ret.add(motechId,{type:'string',field:'motechId'});return ret;}"
        }
    }
 }
