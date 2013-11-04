@@ -85,7 +85,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
     @Override
     public void scheduleWeeklyExecTrans(String executionInstanceId, int minute, int hour, int day) throws PentahoJobException {
         String hourString = validateAndParseValue(hour, 0, 23);
-        String dayString = validateAndParseValue(day, 0, 6);
+        String dayString = validateAndParseValue(day, 1, 7);
         String minuteString = validateAndParseValue(minute, 0, 59);
 
         MotechEvent weeklyEvent = new MotechEvent("weeklyPentahoReport");
@@ -102,7 +102,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
     public void scheduleMonthlyExecTrans(String executionInstanceId, int minute, int hour, int dayOfMonth)
             throws PentahoJobException {
         String hourString = validateAndParseValue(hour, 0, 23);
-        String dayString = validateAndParseValue(dayOfMonth, 0, 31);
+        String dayString = validateAndParseValue(dayOfMonth, 1, 31);
         String minuteString = validateAndParseValue(minute, 0, 59);
 
         MotechEvent monthlyEvent = new MotechEvent("monthlyPentahoReport");

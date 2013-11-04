@@ -129,7 +129,7 @@ public class ReportingJobListener {
                 now = now.withDayOfMonth(dayOfMonth);
             }
             if (dayOfWeek != null) {
-                now = now.withDayOfWeek(dayOfWeek);
+                now = now.withDayOfWeek(quartzDayOfWeekToJoda(dayOfWeek));
             }
             if (hourOfDay != null) {
                 now = now.withHourOfDay(hourOfDay);
@@ -178,10 +178,23 @@ public class ReportingJobListener {
         } else if (timeOffset.toLowerCase().contains("days") || timeOffset.toLowerCase().contains("day")) {
             return Period.days(value);
         } else if (timeOffset.toLowerCase().contains("weeks") || timeOffset.toLowerCase().contains("week")) {
-            return Period.days(value);
+            return Period.weeks(value);
         } else if (timeOffset.toLowerCase().contains("months") || timeOffset.toLowerCase().contains("month")) {
-            return Period.days(value);
+            return Period.months(value);
         }
         return Period.ZERO;
+    }
+    
+    /**
+     * Convert a day of week integer from Quartz to Joda convention.
+     * 
+     * @param dayOfWeek day of week using Quartz convention 1-7 = Sun-Sat
+     * @return same day of week using Joda convention 1-7 = Mon-Sun
+     */
+    private Integer quartzDayOfWeekToJoda(Integer dayOfWeek){
+        if (1 == dayOfWeek) {
+            return 7;
+        }
+        return dayOfWeek - 1;
     }
 }
