@@ -21,7 +21,7 @@
         </parameter>
         <parameter>
             <name>motechId</name>
-            <default_value>982db0b2-519f-4008-b8d2-d9c1b91739d2</default_value>
+            <default_value>fbc9a94a-a2cd-4792-9327-5a4ffded83f1</default_value>
             <description/>
         </parameter>
     </parameters>
