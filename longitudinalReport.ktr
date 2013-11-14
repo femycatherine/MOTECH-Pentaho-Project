@@ -11,7 +11,7 @@
     <parameters>
         <parameter>
             <name>endDate</name>
-            <default_value>2013-11-02T00:00:00.000</default_value>
+            <default_value>2013-11-15T00:00:00.000</default_value>
             <description/>
         </parameter>
         <parameter>
@@ -26,7 +26,7 @@
         </parameter>
         <parameter>
             <name>startDate</name>
-            <default_value>2013-11-01T00:00:00.000</default_value>
+            <default_value>2013-10-23T00:00:00.000</default_value>
             <description/>
         </parameter>
     </parameters>
@@ -89,7 +89,7 @@
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Encounter Request</from><to>Encounter JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Person Request</from><to>Person JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Request</from><to>Calls JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter URL Parts</from><to>Encounter Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Patient URL Parts</from><to>Patient Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Person URL Parts</from><to>Person Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls URL Parts</from><to>Calls Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Variables</from><to>Encounter Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Variables</from><to>Calls Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Query URL</from><to>Encounter Request</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Query URL</from><to>Patient Request</to><enabled>Y</enabled> </hop>  <hop> <from>Person Query URL</from><to>Person Request</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Query URL</from><to>Calls Request</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patient personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Person personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Request</from><to>Patient JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter JSON</from><to>Trim Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Patient JSON</from><to>Trim Patient</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Patient</from><to>Sort Patient personId</to><enabled>Y</enabled> </hop>  <hop> <from>Person JSON</from><to>Trim Person</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Person</from><to>Sort Person personId</to><enabled>Y</enabled> </hop>  <hop> <from>Calls JSON</from><to>Trim Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Encounter</from><to>Sort Encounter motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter motechId</from><to>Full Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Calls</from><to>Sort Calls timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Full Encounter</from><to>Sort Encounter timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Calls timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Time Stamps</from><to>Unify motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Unify motechId</from><to>Group by motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Full Patients</from><to>Sort Patients motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patients motechId</from><to>Full Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Events Request</from><to>Events JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Events URL Parts</from><to>Events Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Events Variables</from><to>Events Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Events JSON</from><to>Trim Events</to><enabled>Y</enabled> </hop>  <hop> <from>Events Query URL</from><to>Events Request</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Events</from><to>Sort Events timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter and Call Times</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Events timeStamp</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  <hop> <from>Enounter Call and Event Times</from><to>Unify Time Stamps</to><enabled>Y</enabled> </hop>  <hop> <from>Group by motechId</from><to>Write Spreadsheet</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Encounter Request</from><to>Encounter JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Person Request</from><to>Person JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Request</from><to>Calls JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter URL Parts</from><to>Encounter Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Patient URL Parts</from><to>Patient Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Person URL Parts</from><to>Person Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls URL Parts</from><to>Calls Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Variables</from><to>Encounter Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Variables</from><to>Calls Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Query URL</from><to>Encounter Request</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Query URL</from><to>Patient Request</to><enabled>Y</enabled> </hop>  <hop> <from>Person Query URL</from><to>Person Request</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Query URL</from><to>Calls Request</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patient personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Person personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Request</from><to>Patient JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter JSON</from><to>Trim Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Patient JSON</from><to>Trim Patient</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Patient</from><to>Sort Patient personId</to><enabled>Y</enabled> </hop>  <hop> <from>Person JSON</from><to>Trim Person</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Person</from><to>Sort Person personId</to><enabled>Y</enabled> </hop>  <hop> <from>Calls JSON</from><to>Trim Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Encounter</from><to>Sort Encounter timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Calls</from><to>Sort Calls timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Unify timeStamp</from><to>Unify motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Full Patients</from><to>Sort Patients motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Events Request</from><to>Events JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Events URL Parts</from><to>Events Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Events Variables</from><to>Events Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Events JSON</from><to>Trim Events</to><enabled>Y</enabled> </hop>  <hop> <from>Events Query URL</from><to>Events Request</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Events</from><to>Sort Events timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Events timeStamp</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  <hop> <from>Enounter Call and Event Times</from><to>Unify timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Group by motechId</from><to>Write Spreadsheet</to><enabled>Y</enabled> </hop>  <hop> <from>Unify motechId</from><to>Sort Unified motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Unified motechId</from><to>Add Patient Info</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patients motechId</from><to>Add Patient Info</to><enabled>Y</enabled> </hop>  <hop> <from>Add Patient Info</from><to>Group by motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Calls timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter and Call Times</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Calls JSON</name>
     <type>JsonInput</type>
@@ -210,8 +210,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>320</yloc>
+      <xloc>240</xloc>
+      <yloc>300</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -235,8 +235,8 @@
 </formula>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>180</yloc>
+      <xloc>240</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -278,8 +278,8 @@
       </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>240</yloc>
+      <xloc>240</xloc>
+      <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -332,8 +332,8 @@
     <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>40</yloc>
+      <xloc>240</xloc>
+      <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -376,8 +376,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>100</yloc>
+      <xloc>240</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -571,7 +571,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>100</xloc>
-      <yloc>240</yloc>
+      <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -625,7 +625,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>100</xloc>
-      <yloc>40</yloc>
+      <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -669,34 +669,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>100</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Encounter and Call Times</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>FULL OUTER</join_type>
-<step1>Sort Encounter timeStamp</step1>
-<step2>Sort Calls timeStamp</step2>
-    <keys_1>
-      <key>encounterTimeStamp</key>
-    </keys_1>
-    <keys_2>
-      <key>callTimeStamp</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>800</yloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -722,8 +695,8 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>880</yloc>
+      <xloc>300</xloc>
+      <yloc>660</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -874,8 +847,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>320</yloc>
+      <xloc>380</xloc>
+      <yloc>300</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -899,8 +872,8 @@
 </formula>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>180</yloc>
+      <xloc>380</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -942,8 +915,8 @@
       </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>240</yloc>
+      <xloc>380</xloc>
+      <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -996,8 +969,8 @@
     <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>40</yloc>
+      <xloc>380</xloc>
+      <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1040,35 +1013,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Full Encounter</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>LEFT OUTER</join_type>
-<step1>Sort Encounter motechId</step1>
-<step2>Sort Patients motechId</step2>
-    <keys_1>
-      <key>encounterMotechId</key>
-    </keys_1>
-    <keys_2>
-      <key>motechId</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>240</xloc>
-      <yloc>620</yloc>
+      <xloc>380</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1094,8 +1040,8 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>500</yloc>
+      <xloc>660</xloc>
+      <yloc>580</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1131,8 +1077,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>1140</yloc>
+      <xloc>400</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1218,8 +1164,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>240</yloc>
+      <xloc>600</xloc>
+      <yloc>300</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1243,8 +1189,8 @@
 </formula>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>100</yloc>
+      <xloc>600</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1286,8 +1232,8 @@
       </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>160</yloc>
+      <xloc>600</xloc>
+      <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1340,8 +1286,8 @@
     <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>40</yloc>
+      <xloc>600</xloc>
+      <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1466,8 +1412,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
-      <yloc>220</yloc>
+      <xloc>720</xloc>
+      <yloc>300</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1491,8 +1437,8 @@
 </formula>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
-      <yloc>80</yloc>
+      <xloc>720</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1534,8 +1480,8 @@
       </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
-      <yloc>140</yloc>
+      <xloc>720</xloc>
+      <yloc>220</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1588,7 +1534,7 @@
     <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
+      <xloc>720</xloc>
       <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1620,39 +1566,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort Encounter motechId</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>encounterMotechId</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
+      <xloc>240</xloc>
       <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1684,8 +1598,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>240</xloc>
-      <yloc>720</yloc>
+      <xloc>100</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1716,8 +1630,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>520</yloc>
+      <xloc>380</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1748,8 +1662,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>420</yloc>
+      <xloc>600</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1780,8 +1694,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>560</yloc>
+      <xloc>660</xloc>
+      <yloc>660</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1812,8 +1726,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
-      <yloc>420</yloc>
+      <xloc>720</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1838,8 +1752,8 @@
       </remove>      <remove>        <name>endDate</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>400</yloc>
+      <xloc>240</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1890,8 +1804,8 @@
       </remove>      <remove>        <name>result</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>780</xloc>
-      <yloc>400</yloc>
+      <xloc>380</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1914,8 +1828,8 @@
       </remove>      <remove>        <name>result</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>320</yloc>
+      <xloc>600</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1938,14 +1852,14 @@
       </remove>      <remove>        <name>result</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>460</xloc>
-      <yloc>320</yloc>
+      <xloc>720</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Unify Time Stamps</name>
+    <name>Unify timeStamp</name>
     <type>ConcatFields</type>
     <description/>
     <distribute>Y</distribute>
@@ -1982,7 +1896,7 @@
       <date_time_format/>
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
-      <fast_dump>N</fast_dump>
+      <fast_dump>Y</fast_dump>
       <splitevery>0</splitevery>
     </file>
     <fields>
@@ -2030,8 +1944,8 @@
     </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>980</yloc>
+      <xloc>300</xloc>
+      <yloc>740</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2074,7 +1988,7 @@
       <date_time_format/>
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
-      <fast_dump>N</fast_dump>
+      <fast_dump>Y</fast_dump>
       <splitevery>0</splitevery>
     </file>
     <fields>
@@ -2122,8 +2036,8 @@
     </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>1060</yloc>
+      <xloc>300</xloc>
+      <yloc>820</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2161,7 +2075,7 @@
       <SpecifyFormat>N</SpecifyFormat>
       <date_time_format/>
       <sheetname>Sheet1</sheetname>
-      <autosizecolums>N</autosizecolums>
+      <autosizecolums>Y</autosizecolums>
       <stream_data>N</stream_data>
       <protect_sheet>N</protect_sheet>
       <password>Encrypted </password>
@@ -2181,7 +2095,7 @@
         <name>grandMotechId</name>
         <type>-</type>
         <format/>
-        <title/>
+        <title>motechId</title>
         <titleStyleCell/>
         <styleCell/>
         <commentField/>
@@ -2193,7 +2107,7 @@
         <name>grandTimeStamp</name>
         <type>-</type>
         <format/>
-        <title/>
+        <title>timeStamp</title>
         <titleStyleCell/>
         <styleCell/>
         <commentField/>
@@ -2406,18 +2320,6 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>schedulerJobId</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
         <name>eventPhoneNumber</name>
         <type>-</type>
         <format/>
@@ -2441,11 +2343,109 @@
         <formula>N</formula>
         <hyperlinkField/>
       </field>
+      <field>
+        <name>schedulerJobId</name>
+        <type>-</type>
+        <format/>
+        <title/>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>1220</yloc>
+      <xloc>400</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add Patient Info</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>LEFT OUTER</join_type>
+<step1>Sort Unified motechId</step1>
+<step2>Sort Patients motechId</step2>
+    <keys_1>
+      <key>grandMotechId</key>
+    </keys_1>
+    <keys_2>
+      <key>motechId</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>400</xloc>
+      <yloc>960</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort Unified motechId</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>grandMotechId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>300</xloc>
+      <yloc>900</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Encounter and Call Times</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>FULL OUTER</join_type>
+<step1>Sort Encounter timeStamp</step1>
+<step2>Sort Calls timeStamp</step2>
+    <keys_1>
+      <key>encounterTimeStamp</key>
+    </keys_1>
+    <keys_2>
+      <key>callTimeStamp</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>173</xloc>
+      <yloc>574</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
