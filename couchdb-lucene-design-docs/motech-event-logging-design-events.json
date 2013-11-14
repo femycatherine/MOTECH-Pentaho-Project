@@ -1,0 +1,11 @@
+{
+   "_id": "_design/events",
+   "fulltext": {
+       "by_timeStamp": {
+           "defaults": {
+               "store": "yes"
+           },
+           "index": "function (doc){if(doc.type!='CouchEventLog'){return null;}var timeStamp=new Date(doc.timeStamp);var timeStampString=doc.timeStamp;var motechId='cheese';var commcareReceivedOn='';var commcareFormId='';var messageCampaignName='';var schedulerJobId='';var callPhoneNumber='';var stopDate='';function newDocument(){var ret=new Document();ret.add(timeStamp,{type:'date',field:'timeStamp'});ret.add(timeStampString,{type:'string',field:'timeStampString'});ret.add(motechId,{type:'string',field:'motechId'});ret.add(commcareReceivedOn,{type:'string',field:'commcareReceivedOn'});ret.add(commcareFormId,{type:'string',field:'commcareFormId'});ret.add(messageCampaignName,{type:'string',field:'messageCampaignName'});ret.add(schedulerJobId,{type:'string',field:'schedulerJobId'});ret.add(callPhoneNumber,{type:'string',field:'callPhoneNumber'});ret.add(stopDate,{type:'string',field:'stopDate'});return ret;}if(doc.subject==='org.motechproject.commcare.api.formstub'){for(caseIndex in doc.parameters.caseIds){motechId=doc.parameters.caseIds[caseIndex];commcareReceivedOn=doc.parameters.receivedOn;commcareFormId=doc.parameters.formId;return newDocument();}}else{if(doc.subject==='org.motechproject.messagecampaign.enrolled-user'){motechId=doc.parameters.ExternalID;messageCampaignName=doc.parameters.CampaignName;return newDocument();}else{if(doc.subject==='org.motechproject.messagecampaign.fired-campaign-message'){motechId=doc.parameters.ExternalID;messageCampaignName=doc.parameters.CampaignName;schedulerJobId=doc.parameters.JobID;return newDocument();}else{if(doc.subject==='org.motechproject.mrs.api.Patient.Created'){motechId=doc.parameters.MotechId;return newDocument();}else{if(doc.subject.indexOf('org.motechproject.icappr')>=0){if('motechId' in doc.parameters){motechId=doc.parameters.motechId;if('JobID' in doc.parameters){schedulerJobId=doc.parameters.JobID;}if('PhoneNum' in doc.parameters){callPhoneNumber=doc.parameters.PhoneNum;}if('stop_date' in doc.parameters){stopDate=doc.parameters.stop_date;}return newDocument();}}}}}}}"
+       }
+   }
+}
