@@ -16,7 +16,7 @@
         </parameter>
         <parameter>
             <name>filePath</name>
-            <default_value>&#47;home&#47;motech4&#47;Desktop&#47;</default_value>
+            <default_value>&#47;home&#47;motech4&#47;Desktop&#47;icappr-reports&#47;</default_value>
             <description/>
         </parameter>
         <parameter>
