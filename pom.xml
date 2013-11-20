@@ -103,17 +103,17 @@
 						<Context-Path>pentaho/api</Context-Path>
 						<Resource-Path>pentaho</Resource-Path>
 						<Export-Package>
-							org.motechproject.reporting.pentaho;version=${version},
+							org.motechproject.reporting.pentaho;version=${project.version},
 						</Export-Package>
 						<Import-Package>
 							sun.reflect,
 							org.ektorp.support,
-							org.motechproject.server.config;version=${version},
-							org.motechproject.server.config.service;version=${version},
-							org.motechproject.event.listener;version=${version},
-							org.motechproject.event.listener.annotations;version=${version},
-							org.motechproject.osgi.web;version=${version},
-							org.motechproject.commons.couchdb.service;version=${version},
+							org.motechproject.server.config;version=${project.version},
+							org.motechproject.server.config.service;version=${project.version},
+							org.motechproject.event.listener;version=${project.version},
+							org.motechproject.event.listener.annotations;version=${project.version},
+							org.motechproject.osgi.web;version=${project.version},
+							org.motechproject.commons.couchdb.service;version=${project.version},
 							org.springframework.http.client,
 							org.springframework.http.converter,
 							org.springframework.web.servlet.config,
