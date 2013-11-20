@@ -21,7 +21,7 @@
         </parameter>
         <parameter>
             <name>motechId</name>
-            <default_value>fbc9a94a-a2cd-4792-9327-5a4ffded83f1</default_value>
+            <default_value>7d977ac3-c7d2-4cc1-a758-9c08701ce077</default_value>
             <description/>
         </parameter>
     </parameters>
@@ -84,34 +84,7 @@
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Encounter Request</from><to>Encounter JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Person Request</from><to>Person JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Request</from><to>Calls JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter URL Parts</from><to>Encounter Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Patient URL Parts</from><to>Patient Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Person URL Parts</from><to>Person Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls URL Parts</from><to>Calls Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Variables</from><to>Encounter Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Variables</from><to>Calls Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Query URL</from><to>Encounter Request</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Query URL</from><to>Patient Request</to><enabled>Y</enabled> </hop>  <hop> <from>Person Query URL</from><to>Person Request</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Query URL</from><to>Calls Request</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patient personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Person personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Request</from><to>Patient JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter JSON</from><to>Trim Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Patient JSON</from><to>Trim Patient</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Patient</from><to>Sort Patient personId</to><enabled>Y</enabled> </hop>  <hop> <from>Person JSON</from><to>Trim Person</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Person</from><to>Sort Person personId</to><enabled>Y</enabled> </hop>  <hop> <from>Calls JSON</from><to>Trim Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Encounter</from><to>Sort Encounter timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Calls</from><to>Sort Calls timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Unify timeStamp</from><to>Unify motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Full Patients</from><to>Sort Patients motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Events Request</from><to>Events JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Events URL Parts</from><to>Events Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Events Variables</from><to>Events Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Events JSON</from><to>Trim Events</to><enabled>Y</enabled> </hop>  <hop> <from>Events Query URL</from><to>Events Request</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Events</from><to>Sort Events timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Events timeStamp</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  <hop> <from>Enounter Call and Event Times</from><to>Unify timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Group by motechId</from><to>Write Spreadsheet</to><enabled>Y</enabled> </hop>  <hop> <from>Unify motechId</from><to>Sort Unified motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Unified motechId</from><to>Add Patient Info</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patients motechId</from><to>Add Patient Info</to><enabled>Y</enabled> </hop>  <hop> <from>Add Patient Info</from><to>Group by motechId</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Calls timeStamp</from><to>Encounter and Call Times</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter and Call Times</from><to>Enounter Call and Event Times</to><enabled>Y</enabled> </hop>  </order>
-  <step>
-    <name>Add Patient Info</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>LEFT OUTER</join_type>
-<step1>Sort Unified motechId</step1>
-<step2>Sort Patients motechId</step2>
-    <keys_1>
-      <key>grandMotechId</key>
-    </keys_1>
-    <keys_2>
-      <key>motechId</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>960</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
+  <hop> <from>Encounter Request</from><to>Encounter JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Person Request</from><to>Person JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Request</from><to>Calls JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter URL Parts</from><to>Encounter Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Patient URL Parts</from><to>Patient Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Person URL Parts</from><to>Person Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls URL Parts</from><to>Calls Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Variables</from><to>Encounter Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Variables</from><to>Calls Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter Query URL</from><to>Encounter Request</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Query URL</from><to>Patient Request</to><enabled>Y</enabled> </hop>  <hop> <from>Person Query URL</from><to>Person Request</to><enabled>Y</enabled> </hop>  <hop> <from>Calls Query URL</from><to>Calls Request</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Patient personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Person personId</from><to>Full Patients</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Request</from><to>Patient JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter JSON</from><to>Trim Encounter</to><enabled>Y</enabled> </hop>  <hop> <from>Patient JSON</from><to>Trim Patient</to><enabled>Y</enabled> </hop>  <hop> <from>Person JSON</from><to>Trim Person</to><enabled>Y</enabled> </hop>  <hop> <from>Calls JSON</from><to>Trim Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Events Request</from><to>Events JSON</to><enabled>Y</enabled> </hop>  <hop> <from>Events URL Parts</from><to>Events Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Events Variables</from><to>Events Query URL</to><enabled>Y</enabled> </hop>  <hop> <from>Events JSON</from><to>Trim Events</to><enabled>Y</enabled> </hop>  <hop> <from>Events Query URL</from><to>Events Request</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Encounter</from><to>Label Encounter Data</to><enabled>Y</enabled> </hop>  <hop> <from>Label Encounter Data</from><to>Sort Encounter timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Patient</from><to>Sort Patient personId</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Person</from><to>Sort Person personId</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Calls</from><to>Label Calls Data</to><enabled>Y</enabled> </hop>  <hop> <from>Trim Events</from><to>Label Events Data</to><enabled>Y</enabled> </hop>  <hop> <from>Label Events Data</from><to>Sort Events timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Label Calls Data</from><to>Sort Calls timeStamp</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter timeStamp</from><to>Rotate Encounter Table</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Encounter timeStamp</from><to>Rotate Encounter Table</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Time Stamp</from><to>Unify Motech ID</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Calls timeStamp</from><to>Rotate Calls Table</to><enabled>Y</enabled> </hop>  <hop> <from>Rotate Encounter Table</from><to>Encounter with Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Rotate Calls Table</from><to>Encounter with Calls</to><enabled>Y</enabled> </hop>  <hop> <from>Sort Events timeStamp</from><to>Encounter with Calls with Events</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter with Calls</from><to>Encounter with Calls with Events</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Data Value</from><to>Unify Data Name</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Data Name</from><to>Unify Data Source</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Data Source</from><to>Unify Time Stamp</to><enabled>Y</enabled> </hop>  <hop> <from>Encounter with Calls with Events</from><to>Unify Data Value</to><enabled>Y</enabled> </hop>  <hop> <from>Pick Patient</from><to>Ignore</to><enabled>Y</enabled> </hop>  <hop> <from>Full Patients</from><to>Patient Variables</to><enabled>Y</enabled> </hop>  <hop> <from>Patient Variables</from><to>Pick Patient</to><enabled>Y</enabled> </hop>  <hop> <from>Unify Motech ID</from><to>Wait for Patient Data to Spreadsheet</to><enabled>Y</enabled> </hop>  <hop> <from>Wait for Patient Data to Spreadsheet</from><to>Time Data to Spreadsheet</to><enabled>Y</enabled> </hop>  <hop> <from>Pick Patient</from><to>Rotate Patient Data</to><enabled>Y</enabled> </hop>  <hop> <from>Rotate Patient Data</from><to>Patient Data to Spreadsheet</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Calls JSON</name>
     <type>JsonInput</type>
@@ -155,6 +128,19 @@
       <field>
         <name>callDuration</name>
         <path>$..callDuration</path>
+        <type>-</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>callEndDate</name>
+        <path>$..callEndDateString</path>
         <type>-</type>
         <format/>
         <currency/>
@@ -673,60 +659,6 @@
     </step>
 
   <step>
-    <name>Encounter and Call Times</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>FULL OUTER</join_type>
-<step1>Sort Encounter timeStamp</step1>
-<step2>Sort Calls timeStamp</step2>
-    <keys_1>
-      <key>encounterTimeStamp</key>
-    </keys_1>
-    <keys_2>
-      <key>callTimeStamp</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>180</xloc>
-      <yloc>580</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Enounter Call and Event Times</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>FULL OUTER</join_type>
-<step1>Encounter and Call Times</step1>
-<step2>Sort Events timeStamp</step2>
-    <keys_1>
-      <key>encounterTimeStamp</key>
-    </keys_1>
-    <keys_2>
-      <key>eventTimeStamp</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
-      <yloc>660</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Events JSON</name>
     <type>JsonInput</type>
     <description/>
@@ -756,7 +688,7 @@
       <field>
         <name>eventTimeStamp</name>
         <path>$..timeStampString</path>
-        <type>-</type>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -769,7 +701,7 @@
       <field>
         <name>eventMotechId</name>
         <path>$..motechId</path>
-        <type>-</type>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -780,9 +712,9 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>commcareReceivedOn</name>
-        <path>$..commcareReceivedOn</path>
-        <type>-</type>
+        <name>eventDataName</name>
+        <path>$..dataName</path>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -793,66 +725,14 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>commcareFormId</name>
-        <path>$..commcareFormId</path>
-        <type>-</type>
+        <name>eventDataValue</name>
+        <path>$..dataValue</path>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>messageCampaignName</name>
-        <path>$..messageCampaignName</path>
-        <type>-</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>schedulerJobId</name>
-        <path>$..schedulerJobId</path>
-        <type>-</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>eventPhoneNumber</name>
-        <path>$..callPhoneNumber</path>
-        <type>-</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>eventStopDate</name>
-        <path>$..stopDate</path>
-        <type>-</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
+        <length>1000</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
@@ -1036,7 +916,7 @@
     <name>Full Patients</name>
     <type>MergeJoin</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1060,8 +940,8 @@
     </step>
 
   <step>
-    <name>Group by motechId</name>
-    <type>SortRows</type>
+    <name>Label Calls Data</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1069,29 +949,85 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>grandMotechId</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-      <field>
-        <name>grandTimeStamp</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
+        <name>callDataSource</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Flowsession</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>1040</yloc>
+      <xloc>240</xloc>
+      <yloc>460</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Label Encounter Data</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>encounterDataSource</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Encounter</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>80</xloc>
+      <yloc>460</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Label Events Data</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>eventDataSource</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Events</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>380</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1124,7 +1060,7 @@
     </file>
     <fields>
       <field>
-        <name>motechId</name>
+        <name>patientMotechId</name>
         <path>$..motechId</path>
         <type>String</type>
         <format/>
@@ -1137,7 +1073,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>studySite</name>
+        <name>patientStudySite</name>
         <path>$..facilityId</path>
         <type>-</type>
         <format/>
@@ -1554,6 +1490,71 @@
     </step>
 
   <step>
+    <name>Rotate Calls Table</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>callDataName</typefield>
+    <fields>      <field>        <name>callSid</name>
+        <value>callSid</value>
+        <norm>callDataValue</norm>
+        </field>      <field>        <name>callPhoneNumber</name>
+        <value>callPhoneNumber</value>
+        <norm>callDataValue</norm>
+        </field>      <field>        <name>callDuration</name>
+        <value>callDuration</value>
+        <norm>callDataValue</norm>
+        </field>      <field>        <name>callEndDate</name>
+        <value>callEndDate</value>
+        <norm>callDataValue</norm>
+        </field>      <field>        <name>callDisposition</name>
+        <value>callDisposition</value>
+        <norm>callDataValue</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>240</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rotate Encounter Table</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>encounterDataName</typefield>
+    <fields>      <field>        <name>encounterId</name>
+        <value>encounterId</value>
+        <norm>encounterDataValue</norm>
+        </field>      <field>        <name>encounterType</name>
+        <value>encounterType</value>
+        <norm>encounterDataValue</norm>
+        </field>      <field>        <name>answer</name>
+        <value>answer</value>
+        <norm>encounterDataValue</norm>
+        </field>      <field>        <name>numAnswers</name>
+        <value>numAnswers</value>
+        <norm>encounterDataValue</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>80</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Sort Calls timeStamp</name>
     <type>SortRows</type>
     <description/>
@@ -1580,7 +1581,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>240</xloc>
-      <yloc>460</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1612,7 +1613,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>80</xloc>
-      <yloc>460</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1644,7 +1645,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>380</xloc>
-      <yloc>460</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1682,38 +1683,6 @@
     </step>
 
   <step>
-    <name>Sort Patients motechId</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>motechId</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>660</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Sort Person personId</name>
     <type>SortRows</type>
     <description/>
@@ -1741,38 +1710,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>720</xloc>
       <yloc>460</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort Unified motechId</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>grandMotechId</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
-      <yloc>900</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1901,7 +1838,7 @@
     </step>
 
   <step>
-    <name>Unify motechId</name>
+    <name>Unify Motech ID</name>
     <type>ConcatFields</type>
     <description/>
     <distribute>Y</distribute>
@@ -1986,14 +1923,14 @@
     </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
-      <yloc>820</yloc>
+      <xloc>220</xloc>
+      <yloc>1140</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Unify timeStamp</name>
+    <name>Unify Time Stamp</name>
     <type>ConcatFields</type>
     <description/>
     <distribute>Y</distribute>
@@ -2078,14 +2015,496 @@
     </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
+      <xloc>220</xloc>
+      <yloc>1080</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Time Data to Spreadsheet</name>
+    <type>TypeExitExcelWriterStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <header>Y</header>
+    <footer>N</footer>
+    <makeSheetActive>Y</makeSheetActive>
+    <rowWritingMethod>overwrite</rowWritingMethod>
+    <startingCell>A1</startingCell>
+    <appendOmitHeader>N</appendOmitHeader>
+    <appendOffset>1</appendOffset>
+    <appendEmpty>0</appendEmpty>
+    <rowWritingMethod>overwrite</rowWritingMethod>
+    <forceFormulaRecalculation>N</forceFormulaRecalculation>
+    <leaveExistingStylesUnchanged>N</leaveExistingStylesUnchanged>
+    <appendLines>Y</appendLines>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>${filePath}${fileName}_${motechId}</name>
+      <extention>xlsx</extention>
+      <do_not_open_newfile_init>Y</do_not_open_newfile_init>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <sheetname>Sheet1</sheetname>
+      <autosizecolums>Y</autosizecolums>
+      <stream_data>N</stream_data>
+      <protect_sheet>N</protect_sheet>
+      <password>Encrypted </password>
+      <protected_by/>
+      <splitevery>0</splitevery>
+      <if_file_exists>reuse</if_file_exists>
+      <if_sheet_exists>reuse</if_sheet_exists>
+      </file>
+    <template>
+      <enabled>N</enabled>
+      <sheet_enabled>N</sheet_enabled>
+      <filename>template.xls</filename>
+      <sheetname/>
+    </template>
+    <fields>
+      <field>
+        <name>grandTimeStamp</name>
+        <type>-</type>
+        <format/>
+        <title>Time Stamp</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
+        <name>grandDataSource</name>
+        <type>-</type>
+        <format/>
+        <title>Data Source</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
+        <name>grandDataName</name>
+        <type>-</type>
+        <format/>
+        <title>Data Name</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
+        <name>grandDataValue</name>
+        <type>-</type>
+        <format/>
+        <title>Data Value</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>1300</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Encounter with Calls</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>FULL OUTER</join_type>
+<step1>Rotate Encounter Table</step1>
+<step2>Rotate Calls Table</step2>
+    <keys_1>
+      <key>encounterTimeStamp</key>
+    </keys_1>
+    <keys_2>
+      <key>callTimeStamp</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>160</xloc>
       <yloc>740</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Write Spreadsheet</name>
+    <name>Encounter with Calls with Events</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>FULL OUTER</join_type>
+<step1>Encounter with Calls</step1>
+<step2>Sort Events timeStamp</step2>
+    <keys_1>
+      <key>callTimeStamp</key>
+    </keys_1>
+    <keys_2>
+      <key>eventTimeStamp</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>820</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unify Data Name</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>callDataName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>encounterDataName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>eventDataName</name>
+        <type>-</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>grandDataName</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>960</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unify Data Value</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>callDataValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>encounterDataValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>eventDataValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>grandDataValue</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>900</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unify Data Source</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>callDataSource</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>encounterDataSource</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>eventDataSource</name>
+        <type>-</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>grandDataSource</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>1020</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Pick Patient</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Rotate Patient Data</send_true_to>
+<send_false_to>Ignore</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>patientMotechId</leftvalue>
+ <function>=</function>
+ <rightvalue>motechId</rightvalue>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>660</xloc>
+      <yloc>740</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Ignore</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>580</xloc>
+      <yloc>820</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Patient Data to Spreadsheet</name>
     <type>TypeExitExcelWriterStep</type>
     <description/>
     <distribute>Y</distribute>
@@ -2117,7 +2536,7 @@
       <SpecifyFormat>N</SpecifyFormat>
       <date_time_format/>
       <sheetname>Sheet1</sheetname>
-      <autosizecolums>Y</autosizecolums>
+      <autosizecolums>N</autosizecolums>
       <stream_data>N</stream_data>
       <protect_sheet>N</protect_sheet>
       <password>Encrypted </password>
@@ -2134,10 +2553,10 @@
     </template>
     <fields>
       <field>
-        <name>grandMotechId</name>
-        <type>-</type>
+        <name>patientDataName</name>
+        <type>String</type>
         <format/>
-        <title>motechId</title>
+        <title>Patient Info</title>
         <titleStyleCell/>
         <styleCell/>
         <commentField/>
@@ -2146,250 +2565,10 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>grandTimeStamp</name>
-        <type>-</type>
+        <name>patientDataValue</name>
+        <type>String</type>
         <format/>
-        <title>timeStamp</title>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>mrn</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>pin</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>personPhoneNumber</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>iptInitDate</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>studySite</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>language</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>encounterType</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>encounterId</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>numAnswers</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>answer</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>callSid</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>callPhoneNumber</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>callDuration</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>callDisposition</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>commcareReceivedOn</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>commcareFormId</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>messageCampaignName</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>eventPhoneNumber</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>eventStopDate</name>
-        <type>-</type>
-        <format/>
-        <title/>
-        <titleStyleCell/>
-        <styleCell/>
-        <commentField/>
-        <commentAuthorField/>
-        <formula>N</formula>
-        <hyperlinkField/>
-      </field>
-      <field>
-        <name>schedulerJobId</name>
-        <type>-</type>
-        <format/>
-        <title/>
+        <title>Value</title>
         <titleStyleCell/>
         <styleCell/>
         <commentField/>
@@ -2400,8 +2579,107 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>1120</yloc>
+      <xloc>720</xloc>
+      <yloc>920</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Patient Variables</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>motechId</name>
+        <variable>${motechId}</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>660</xloc>
+      <yloc>660</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Wait for Patient Data to Spreadsheet</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <steps>
+      <step>
+        <name>Patient Data to Spreadsheet</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>220</xloc>
+      <yloc>1240</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rotate Patient Data</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>patientDataName</typefield>
+    <fields>      <field>        <name>patientMotechId</name>
+        <value>Motech ID</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>patientPersonId</name>
+        <value>Person ID</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>mrn</name>
+        <value>MRN</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>patientStudySite</name>
+        <value>Study Site</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>personPhoneNumber</name>
+        <value>Phone Number</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>pin</name>
+        <value>PIN</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>language</name>
+        <value>Language</value>
+        <norm>patientDataValue</norm>
+        </field>      <field>        <name>iptInitDate</name>
+        <value>IPT Initiation Date</value>
+        <norm>patientDataValue</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>720</xloc>
+      <yloc>820</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
