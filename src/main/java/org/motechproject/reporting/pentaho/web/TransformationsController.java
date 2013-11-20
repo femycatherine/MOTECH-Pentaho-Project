@@ -69,15 +69,10 @@ public class TransformationsController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
-    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException, PentahoJobException {
+    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException,
+            PentahoJobException {
 
-        try {
-            pentahoTransformations.update(transformation);
-        } catch (UpdateConflictException e) {
-            PentahoExecuteTransInstance oldTrans = pentahoTransformations.get(transformation.getId());
-            transformation.setRevision(oldTrans.getRevision());
-            pentahoTransformations.update(transformation);
-        }
+        updateTransformation(transformation);
 
         if (transformation.getDayOfMonth() != null) {
             // schedule monthly
@@ -94,6 +89,16 @@ public class TransformationsController {
         }
     }
 
+    @RequestMapping(value = "/immediate", method = RequestMethod.PUT)
+    @ResponseBody
+    public void runTransformationImmediately(@RequestBody PentahoExecuteTransInstance transformation)
+            throws BundleException, PentahoJobException {
+
+        updateTransformation(transformation);
+
+        reportingService.scheduleImmediateExecTrans(transformation.getId());
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
     public void saveTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException {
@@ -104,5 +109,15 @@ public class TransformationsController {
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public void deleteTransformation(@RequestParam("transId") String transId) throws BundleException {
         reportingService.deleteTrans(transId);
+    }
+
+    private void updateTransformation(PentahoExecuteTransInstance transformation) {
+        try {
+            pentahoTransformations.update(transformation);
+        } catch (UpdateConflictException e) {
+            PentahoExecuteTransInstance oldTrans = pentahoTransformations.get(transformation.getId());
+            transformation.setRevision(oldTrans.getRevision());
+            pentahoTransformations.update(transformation);
+        }
     }
 }

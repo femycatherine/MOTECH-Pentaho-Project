@@ -1,26 +1,30 @@
-(function () {
-	'use strict';
+(function() {
+    'use strict';
 
-	/* Services */
+    /* Services */
 
-	angular.module('settingsService', ['ngResource']).factory('Settings', function($resource) {
-		return $resource('../pentaho/api/settings');
-	});
+    angular.module('settingsService', [ 'ngResource' ]).factory('Settings', function($resource) {
+        return $resource('../pentaho/api/settings');
+    });
 
-	angular.module('transformationsService', ['ngResource']).factory('Transformations', function($resource) {
-		return $resource('../pentaho/api/transformations', {}, {
+    angular.module('transformationsService', [ 'ngResource' ]).factory('Transformations', function($resource) {
+        return $resource('../pentaho/api/transformations', {}, {
 
-			updateTrans: {
-				method: 'PUT',
-				params: {
-				}
-			},
-			deleteTrans: {
-				method: 'DELETE',
-				params: {
-					transId: 'transId'
-				}
-			}
-		});
-	});
+            updateTrans : {
+                method : 'PUT',
+                params : {}
+            },
+            immediateTrans : {
+                url : '../pentaho/api/transformations/immediate',
+                method : 'PUT',
+                params : {}
+            },
+            deleteTrans : {
+                method : 'DELETE',
+                params : {
+                    transId : 'transId'
+                }
+            }
+        });
+    });
 }());
