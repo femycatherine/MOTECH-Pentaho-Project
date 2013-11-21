@@ -110,6 +110,11 @@
 							ng-click="submit(transformation)" type="button"
 							value="{{msg('pentaho.transformations.submit')}}"
 							class="btn btn-primary" />
+                        <input ng-disabled="pentahoTransformationsForm.$invalid"
+                            ng-click="runImmediately(transformation)" type="button"
+                            value="{{msg('pentaho.transformations.immediate')}}"
+                            class="btn btn-primary" />
+                            
 					</div>
 					<div class="controls">
 						<input ng-click="removeTrans($index, transformation)" type="button"

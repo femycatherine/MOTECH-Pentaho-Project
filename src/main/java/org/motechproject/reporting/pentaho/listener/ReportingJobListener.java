@@ -41,7 +41,8 @@ public class ReportingJobListener {
     @Autowired
     private AllPentahoTransformations allTransformations;
 
-    @MotechListener(subjects = { "dailyPentahoReport", "weeklyPentahoReport" })
+    @MotechListener(subjects = { "immediatePentahoReport", "dailyPentahoReport", "weeklyPentahoReport",
+            "monthlyPentahoReport" })
     public void handleReportJob(MotechEvent event) {
         String transId = (String) event.getParameters().get("transId");
         PentahoExecuteTransInstance trans = allTransformations.get(transId);
@@ -184,14 +185,15 @@ public class ReportingJobListener {
         }
         return Period.ZERO;
     }
-    
+
     /**
      * Convert a day of week integer from Quartz to Joda convention.
      * 
-     * @param dayOfWeek day of week using Quartz convention 1-7 = Sun-Sat
+     * @param dayOfWeek
+     *            day of week using Quartz convention 1-7 = Sun-Sat
      * @return same day of week using Joda convention 1-7 = Mon-Sun
      */
-    private Integer quartzDayOfWeekToJoda(Integer dayOfWeek){
+    private Integer quartzDayOfWeekToJoda(Integer dayOfWeek) {
         if (1 == dayOfWeek) {
             return 7;
         }

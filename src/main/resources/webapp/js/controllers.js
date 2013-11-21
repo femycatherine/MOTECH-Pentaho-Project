@@ -56,7 +56,7 @@
         });
 
         $scope.submit = function(trans) {
-            trans.$updateTrans(function() {
+            trans.$scheduleTrans(function() {
                 motechAlert('pentaho.transformations.success.saved', 'server.saved');
             }, function() {
                 motechAlert('pentaho.transformations.error.saved', 'server.error');

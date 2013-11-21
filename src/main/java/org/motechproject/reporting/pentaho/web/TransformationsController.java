@@ -14,6 +14,8 @@ import org.motechproject.reporting.pentaho.request.PentahoStatusRequest;
 import org.motechproject.reporting.pentaho.service.PentahoReportingService;
 import org.motechproject.reporting.pentaho.status.ServerStatus;
 import org.osgi.framework.BundleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 @RequestMapping("/transformations")
 public class TransformationsController {
+    
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private PentahoReportingService reportingService;
@@ -69,12 +73,17 @@ public class TransformationsController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
-    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation) throws BundleException,
-            PentahoJobException {
+    public void startTransformation(@RequestBody PentahoExecuteTransInstance transformation,
+            @RequestParam("immediate") boolean immediate) throws BundleException, PentahoJobException {
 
+        logger.info("start transformation: [" + transformation + "], immediate: " + immediate);
+        
         updateTransformation(transformation);
 
-        if (transformation.getDayOfMonth() != null) {
+        if (immediate) {
+            // run once immediately
+            reportingService.scheduleImmediateExecTrans(transformation.getId());
+        } else if (transformation.getDayOfMonth() != null) {
             // schedule monthly
             reportingService.scheduleMonthlyExecTrans(transformation.getId(), transformation.getMinuteOfHour(),
                     transformation.getHourOfDay(), transformation.getDayOfMonth());
@@ -87,16 +96,6 @@ public class TransformationsController {
             reportingService.scheduleDailyExecTrans(transformation.getId(), transformation.getMinuteOfHour(),
                     transformation.getHourOfDay());
         }
-    }
-
-    @RequestMapping(value = "/immediate", method = RequestMethod.PUT)
-    @ResponseBody
-    public void runTransformationImmediately(@RequestBody PentahoExecuteTransInstance transformation)
-            throws BundleException, PentahoJobException {
-
-        updateTransformation(transformation);
-
-        reportingService.scheduleImmediateExecTrans(transformation.getId());
     }
 
     @ResponseStatus(HttpStatus.CREATED)

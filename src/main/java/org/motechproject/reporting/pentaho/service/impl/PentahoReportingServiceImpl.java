@@ -18,13 +18,18 @@ import org.motechproject.reporting.pentaho.util.PentahoCarteHttpClient;
 import org.motechproject.scheduler.MotechSchedulerService;
 import org.motechproject.scheduler.domain.CronSchedulableJob;
 import org.motechproject.scheduler.domain.RunOnceSchedulableJob;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PentahoReportingServiceImpl implements PentahoReportingService {
-    
+
     private final static String TRANS_ID = "transId";
+    private final static int IMMEDIATE_DELAY_SECS = 2;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private AllPentahoTransformations allTransformations;
@@ -37,6 +42,7 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
 
     @Override
     public void deleteTrans(String transId) {
+        schedulerService.safeUnscheduleJob("immediatePentahoReport", transId);
         schedulerService.safeUnscheduleJob("dailyPentahoReport", transId);
         schedulerService.safeUnscheduleJob("weeklyPentahoReport", transId);
         schedulerService.safeUnscheduleJob("monthlyPentahoReport", transId);
@@ -79,12 +85,14 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         immediateEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
         immediateEvent.getParameters().put(TRANS_ID, executionInstanceId);
 
-        RunOnceSchedulableJob job = new RunOnceSchedulableJob(immediateEvent, DateTime.now().toDate());
-        
+        RunOnceSchedulableJob job = new RunOnceSchedulableJob(immediateEvent, DateTime.now()
+                .plusSeconds(IMMEDIATE_DELAY_SECS).toDate());
+
         schedulerService.safeScheduleRunOnceJob(job);
+
+        logger.info("Scheduled immediate job at " + job.getStartDate());
     }
 
-    
     @Override
     public void scheduleDailyExecTrans(String executionInstanceId, int minute, int hour) throws PentahoJobException {
         String hourString = validateAndParseValue(hour, 0, 23);
@@ -93,13 +101,15 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         dailyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
         dailyEvent.getParameters().put(TRANS_ID, executionInstanceId);
 
-        CronSchedulableJob job = new CronSchedulableJob(dailyEvent, JobSchedulerUtil.getDailyCronExpression(minuteString, hourString));
+        CronSchedulableJob job = new CronSchedulableJob(dailyEvent, JobSchedulerUtil.getDailyCronExpression(
+                minuteString, hourString));
 
         schedulerService.safeScheduleJob(job);
     }
 
     @Override
-    public void scheduleWeeklyExecTrans(String executionInstanceId, int minute, int hour, int day) throws PentahoJobException {
+    public void scheduleWeeklyExecTrans(String executionInstanceId, int minute, int hour, int day)
+            throws PentahoJobException {
         String hourString = validateAndParseValue(hour, 0, 23);
         String dayString = validateAndParseValue(day, 1, 7);
         String minuteString = validateAndParseValue(minute, 0, 59);
@@ -108,11 +118,11 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         weeklyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
         weeklyEvent.getParameters().put(TRANS_ID, executionInstanceId);
 
-        CronSchedulableJob job = new CronSchedulableJob(weeklyEvent, JobSchedulerUtil.getWeeklyCronExpression(minuteString, hourString,  dayString));
+        CronSchedulableJob job = new CronSchedulableJob(weeklyEvent, JobSchedulerUtil.getWeeklyCronExpression(
+                minuteString, hourString, dayString));
 
         schedulerService.safeScheduleJob(job);
     }
-
 
     @Override
     public void scheduleMonthlyExecTrans(String executionInstanceId, int minute, int hour, int dayOfMonth)
@@ -125,7 +135,8 @@ public class PentahoReportingServiceImpl implements PentahoReportingService {
         monthlyEvent.getParameters().put(MotechSchedulerService.JOB_ID_KEY, executionInstanceId);
         monthlyEvent.getParameters().put(TRANS_ID, executionInstanceId);
 
-        CronSchedulableJob job = new CronSchedulableJob(monthlyEvent, JobSchedulerUtil.getMonthlyCronExpression(minuteString, hourString,  dayString));
+        CronSchedulableJob job = new CronSchedulableJob(monthlyEvent, JobSchedulerUtil.getMonthlyCronExpression(
+                minuteString, hourString, dayString));
 
         schedulerService.safeScheduleJob(job);
     }

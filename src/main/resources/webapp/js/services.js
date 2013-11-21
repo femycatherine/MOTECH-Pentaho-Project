@@ -10,14 +10,17 @@
     angular.module('transformationsService', [ 'ngResource' ]).factory('Transformations', function($resource) {
         return $resource('../pentaho/api/transformations', {}, {
 
-            updateTrans : {
+            scheduleTrans : {
                 method : 'PUT',
-                params : {}
+                params : {
+                    immediate : false
+                }
             },
             immediateTrans : {
-                url : '../pentaho/api/transformations/immediate',
                 method : 'PUT',
-                params : {}
+                params : {
+                    immediate : true
+                }
             },
             deleteTrans : {
                 method : 'DELETE',
